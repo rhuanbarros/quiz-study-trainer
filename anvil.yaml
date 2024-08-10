@@ -12,6 +12,49 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
 metadata: {title: Quiz study trainer, description: 'Its poupose is to work like flashcards, but it trick questions created automaticaly. '}
 startup: {type: form, module: LayoutPage}
 native_deps: null
+db_schema:
+  questions:
+    client: none
+    server: full
+    columns:
+    - name: title
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: questions
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: topic_description
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: level
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: question
+      admin_ui: {order: 3.25, width: 200}
+      type: string
+    - name: answer_correct
+      admin_ui: {order: 3.5, width: 200}
+      type: string
+    - name: type
+      admin_ui: {width: 200, order: 3.375}
+      type: string
+    - name: answers
+      admin_ui: {width: 200, order: 4.5}
+      type: simpleObject
+    - name: explanation
+      admin_ui: {width: 200, order: 5.5}
+      type: string
+    - name: created_at
+      admin_ui: {order: -1, width: 200}
+      type: datetime
+    title: questions
+secrets:
+  GOOGLE_API_KEY:
+    value: {55C7JZ62MGB2UXA6: 3bG1eECWjXb1/XM0SqljonQNbdOreZb8rlSv0VHYqaWBTpbnmbwaaMWD+X1B+bQ2Cl5AqrEMMV75iFxMMkjh6a8SLycCwOJRs8FHOsS4ODR/2mc7Qg2KNxYC2FQ67PAAnC81OWkoKqt0Mjmrj88wM9kF1bKayL7QOpqvJu6G0JM0/8r3yDk=}
+    type: secret

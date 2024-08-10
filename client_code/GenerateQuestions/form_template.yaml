@@ -8,20 +8,44 @@ components_by_slot:
     properties: {role: headline, text: Generate questions}
     type: Label
     layout_properties: {}
+  - name: label_5
+    properties: {text: List of topics}
+    type: Label
+    layout_properties: {}
   - name: text_area_list_topics
-    properties: {placeholder: List of topics to generate questions from}
+    properties:
+      placeholder: List of topics to generate questions from
+      height: 155.79998779296875
+      text: |-
+        Language Models and Probability
+        Entropy
+        Cross-Entropy
+        Cross-Entropy Loss
+        Perplexity
     type: TextArea
     layout_properties: {}
-  - name: text_box_additional_task_description
-    properties: {placeholder: Additional task description}
+  - name: label_2
+    properties: {text: Additional task description}
+    type: Label
+    layout_properties: {}
+  - name: text_area_additional_task_description
+    properties: {text: 'Create questions only about the definitions of the concepts, like mixing the definition of one with another, or mixing the use of one with the use of another. I need this to memorize this concepts.', height: 90.20001220703125}
+    type: TextArea
+    layout_properties: {}
+  - name: label_4
+    properties: {text: Title}
+    type: Label
+    layout_properties: {}
+  - name: text_box_title
+    properties: {placeholder: Title, text: Probability - LLMs}
     type: TextBox
     layout_properties: {}
-  - name: text_box_1
-    properties: {placeholder: Title}
-    type: TextBox
+  - name: label_3
+    properties: {text: Quantity of questions}
+    type: Label
     layout_properties: {}
   - name: text_box_quantity
-    properties: {placeholder: Quantity of questions to generate}
+    properties: {placeholder: Quantity of questions to generate, text: '1'}
     type: TextBox
     layout_properties: {}
   - name: label_1
@@ -29,18 +53,19 @@ components_by_slot:
     type: Label
     layout_properties: {}
   - name: check_box_easy
-    properties: {text: Easy}
+    properties: {text: Easy, checked: true}
     type: CheckBox
     layout_properties: {}
   - name: check_box_medium
-    properties: {text: Medium}
+    properties: {text: Medium, checked: false}
     type: CheckBox
     layout_properties: {}
   - name: check_box_hard
-    properties: {text: Hard}
+    properties: {text: Hard, checked: false}
     type: CheckBox
     layout_properties: {}
   - name: button_generate
     properties: {text: Generate, role: primary-color}
     type: Button
     layout_properties: {}
+    event_bindings: {click: button_generate_click}
