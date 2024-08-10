@@ -1,0 +1,42 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {}
+  name: content_panel
+  layout_properties: {slot: default}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
+- name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {slot: left-nav}
+  components:
+  - name: link_home
+    properties: {text: Home}
+    type: Link
+    layout_properties: {grid_position: 'KXCSQP,SHVDOY'}
+  - name: link_generate
+    properties: {text: Generate questions}
+    type: Link
+    layout_properties: {grid_position: 'YAXQUP,KXVGLH'}
+    event_bindings: {click: link_generate_click}
+  - name: link_about_us
+    properties: {text: About us}
+    type: Link
+    layout_properties: {grid_position: 'OVSQGL,YRMXPO'}
+    event_bindings: {click: link_about_us_click}
+- name: label_1
+  properties: {text: Quiz study trainer, role: headline}
+  type: Label
+  layout_properties: {slot: title}
+slots:
+  main_slot:
+    index: 0
+    set_layout_properties: {grid_position: 'JPCWMX,LPFPFC'}
+    target: {type: container, name: content_panel}
+layout_metadata: {title: LayoutPage}

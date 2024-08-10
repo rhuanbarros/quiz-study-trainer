@@ -1,0 +1,10 @@
+layout:
+  type: form:LayoutPage
+  form_event_bindings: {show: form_show}
+is_package: true
+components_by_slot:
+  main_slot:
+  - name: headline_1
+    properties: {role: headline, text: About us}
+    type: Label
+    layout_properties: {}

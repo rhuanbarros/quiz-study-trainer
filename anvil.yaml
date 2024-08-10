@@ -1,10 +1,17 @@
 allow_embedding: false
-package_name: Material_Design_1
-name: Material Design 1
-startup_form: Form1
+package_name: quiz_trainer
+name: quiz_trainer
+startup_form: null
 runtime_options:
-  version: 2
+  version: 3
   client_version: '3'
   server_version: python3-sandbox
   server_spec: {base: python310-standard}
-services: []
+  legacy_features: {class_names: true, bootstrap3: true, __dict__: true, root_container: true}
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+metadata: {title: Quiz study trainer, description: 'Its poupose is to work like flashcards, but it trick questions created automaticaly. '}
+startup: {type: form, module: LayoutPage}
+native_deps: null
