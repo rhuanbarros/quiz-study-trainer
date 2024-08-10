@@ -8,3 +8,39 @@ components_by_slot:
     properties: {role: headline, text: Generate questions}
     type: Label
     layout_properties: {}
+  - name: text_area_list_topics
+    properties: {placeholder: List of topics to generate questions from}
+    type: TextArea
+    layout_properties: {}
+  - name: text_box_additional_task_description
+    properties: {placeholder: Additional task description}
+    type: TextBox
+    layout_properties: {}
+  - name: text_box_1
+    properties: {placeholder: Title}
+    type: TextBox
+    layout_properties: {}
+  - name: text_box_quantity
+    properties: {placeholder: Quantity of questions to generate}
+    type: TextBox
+    layout_properties: {}
+  - name: label_1
+    properties: {text: Level of the questions}
+    type: Label
+    layout_properties: {}
+  - name: check_box_easy
+    properties: {text: Easy}
+    type: CheckBox
+    layout_properties: {}
+  - name: check_box_medium
+    properties: {text: Medium}
+    type: CheckBox
+    layout_properties: {}
+  - name: check_box_hard
+    properties: {text: Hard}
+    type: CheckBox
+    layout_properties: {}
+  - name: button_generate
+    properties: {text: Generate, role: primary-color}
+    type: Button
+    layout_properties: {}
