@@ -11,24 +11,48 @@ from langchain_core.messages import AIMessage
 from typing import List
 import json_repair
 
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
-#
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
+from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, ChatMessage
 
-# import nest_asyncio
-# nest_asyncio.apply()
+from langchain_groq import ChatGroq
 
-key = anvil.secrets.get_secret("GOOGLE_API_KEY")
-llm_google = ChatGoogleGenerativeAI(model="gemini-1.5-flash", convert_system_message_to_human=True, google_api_key=key)
+# key_google = anvil.secrets.get_secret("GOOGLE_API_KEY")
+# llm_google = ChatGoogleGenerativeAI(model="gemini-1.5-flash", convert_system_message_to_human=True, google_api_key=key)
+# llm_google = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=key_google)
+
+from langchain_core.pydantic_v1 import BaseModel, Field
+
+class Question(BaseModel):
+    """ A question about a domain of study."""
+
+    topic_description: str = Field(
+        description="A sentence describing the sub-topic to which the question belongs. That means this sentence should specify in a granular level what specific sub-topic the question belongs to. It should be abstract in a way that other questions could be put in this description too. Use between 5 and 10 words."
+    )
+    level: str = Field(
+        description="The difficulty level of the question. It should be only one of the following options: 'easy', 'medium', 'hard'."
+    )
+    question: str = Field(
+        description="The actual question text. It should be a question of type TRUE or FALSE. It means that the questions should be an assertion that could be answered with TRUE or FALSE."
+    )
+    answer_correct: str = Field(
+        description="It should be only one of the following options: TRUE, if the statement of the question is true or FALSE, if the statement of the question is false."
+    )
+    explanation: str = Field(
+        description="An explanation or solution to the question."
+    )
+
+class QuestionList(BaseModel):
+    """A list of Question class."""
+
+    items: list[Question] = Field(
+        description="list of Question"
+    )
+
+# key_groq = anvil.secrets.get_secret("GROQ_API_KEY")
+# llm_groq = ChatGroq(model="llama-3.1-70b-versatile", api_key=key_groq)
+# llm_QuestionList = llm_groq.with_structured_output(QuestionList)
+
 object_schema = """{
                     "properties": {
                       "topic_description": {
@@ -83,38 +107,43 @@ prompt_question_generator = PromptTemplate(
               {domain_knowledge}
               
               FORMAT OUTPUT INSTRUCTIONS:
-              The output should be formatted as a JSON list of objects that conforms class object schema below.
-              You should output just the Json list. 
-              You should not output any other word like "json" in the beginning because it will ruin the parser.
-
-              ```
-              {object_schema}
-              ```
+              It should be formatted as described in the output format.
           """,
       input_variables=["quantity", "level", "additional_task_description"],
       partial_variables={"object_schema": object_schema},
   )
 
-def json_parser(message: AIMessage) -> List[dict]:
-  return json_repair.loads(message.content)
+# def json_parser(message: AIMessage) -> List[dict]:
+#   return json_repair.loads(message.content)
+
+# model_name = "gpt-4o-mini"
+
+# key_openai = anvil.secrets.get_secret("OPENAI_API_KEY")
+# llm = ChatOpenAI(model=model_name, api_key=key_openai)
+# llm_RouteInput = llm.with_structured_output(ListaItem_)
+
+key_google = anvil.secrets.get_secret("GOOGLE_API_KEY")
+llm_google = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=key_google)
+llm_QuestionList = llm_google.with_structured_output(QuestionList)
 
 @anvil.server.callable
 def generate_questions(title, parameters):
   print( "------------------- generate_questions FUNCTION -------------------" )
-      
-  # try:
-  chain = prompt_question_generator | llm_google        
-  response = chain.invoke(parameters)        
-  questions = json_parser(response)
+
+  # response = llm.invoke("Write me a ballad about LangChain")
+  # print(response)
   
-  for question in questions:
-    question["title"] = title
-    question["type"] = "true_or_false"
-    question["created_at"] = datetime.now()
+  chain = prompt_question_generator | llm_QuestionList        
+  questions = chain.invoke(parameters)        
+  # questions = json_parser(response)
+
+  print(questions)
   
-    # add to the database
-    app_tables.feedback.add_row(**question)
-      
-  # except Exception as e:
-  #     print("An error occurred during the generation:", e)
+  # for question in questions:
+  #   question["title"] = title
+  #   question["type"] = "true_or_false"
+  #   question["created_at"] = datetime.now()
   
+  #   # add to the database
+  #   app_tables.feedback.add_row(**question)
+
