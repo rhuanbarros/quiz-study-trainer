@@ -19,3 +19,11 @@ class LayoutPage(LayoutPageTemplate):
 
   def reset_links(self, **event_args):
     self.link_about_us.role = ''
+
+  def form_show(self, **event_args):
+    """This method is called when the form is shown on the page"""
+    pass
+
+  def link_session_settings_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('SessionSettings')

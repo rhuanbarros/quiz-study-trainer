@@ -5,6 +5,6 @@ is_package: true
 components_by_slot:
   main_slot:
   - name: headline_1
-    properties: {role: headline, text: Generate questions}
+    properties: {role: headline, text: Session settings}
     type: Label
     layout_properties: {}

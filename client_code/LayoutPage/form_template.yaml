@@ -2,11 +2,13 @@ is_package: true
 container:
   type: HtmlTemplate
   properties: {html: '@theme:standard-page.html'}
+  event_bindings: {show: form_show}
 components:
 - type: ColumnPanel
   properties: {}
   name: content_panel
   layout_properties: {slot: default}
+  components: []
 - type: FlowPanel
   properties: {}
   name: navbar_links
@@ -16,10 +18,11 @@ components:
   type: ColumnPanel
   layout_properties: {slot: left-nav}
   components:
-  - name: link_home
-    properties: {text: Home}
+  - name: link_session_settings
+    properties: {text: Start}
     type: Link
     layout_properties: {grid_position: 'KXCSQP,SHVDOY'}
+    event_bindings: {click: link_session_settings_click}
   - name: link_generate
     properties: {text: Generate questions}
     type: Link
