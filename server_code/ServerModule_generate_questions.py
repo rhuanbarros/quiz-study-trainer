@@ -15,6 +15,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, ChatMessage
 
+import json
+
 # from langchain_groq import ChatGroq
 
 # key_google = anvil.secrets.get_secret("GOOGLE_API_KEY")
@@ -41,6 +43,11 @@ class Question(BaseModel):
     explanation: str = Field(
         description="An explanation or solution to the question."
     )
+    title: str = Field(
+        description="An explanation or solution to the question. You should leave this property a empty string."
+    )
+    type: str = "true_or_false"
+    created_at: str = datetime.now()
 
 class QuestionList(BaseModel):
     """A list of Question class."""
@@ -135,16 +142,22 @@ def generate_questions(title, parameters):
   
   # chain = prompt_question_generator | llm_google        
   chain = prompt_question_generator | llm_QuestionList        
-  llm_QuestionList = chain.invoke(parameters)        
+  questionList = chain.invoke(parameters)        
   # questions = json_parser(response)
 
-  print(questions)
+  print(questionList.question_itens)
   
-  for question in questions:
-    question["title"] = title
-    question["type"] = "true_or_false"
-    question["created_at"] = datetime.now()
-  
+  for question in questionList.question_itens:
     # add to the database
-    app_tables.feedback.add_row(**question)
+    app_tables.questions.add_row(
+      created_at=datetime.now(), 
+      title=title, 
+      topic_description=question.topic_description, 
+      level=question.level,
+      question=question.question, 
+      type="true_or_false",
+      answer_correct=question.answer_correct,
+      answers="",
+      explanation=question.explanation
+    )
 
