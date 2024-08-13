@@ -33,7 +33,7 @@ components_by_slot:
     type: TextArea
     layout_properties: {}
   - name: label_4
-    properties: {text: Title}
+    properties: {text: Title subject matter}
     type: Label
     layout_properties: {}
   - name: text_box_title

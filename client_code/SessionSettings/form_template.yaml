@@ -8,3 +8,16 @@ components_by_slot:
     properties: {role: headline, text: Session settings}
     type: Label
     layout_properties: {}
+  - name: label_1
+    properties: {text: Select the subject matter}
+    type: Label
+    layout_properties: {}
+  - name: drop_down_1
+    properties: {}
+    type: DropDown
+    layout_properties: {}
+  - name: button_1
+    properties: {text: Start session, role: primary-color}
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: button_1_click}
