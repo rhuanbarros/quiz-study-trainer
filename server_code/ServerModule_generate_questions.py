@@ -157,7 +157,7 @@ def generate_questions(title, parameters):
       question=question.question, 
       type="true_or_false",
       answer_correct=question.answer_correct,
-      answers="",
+      answers=None,
       explanation=question.explanation
     )
 
