@@ -9,10 +9,19 @@ from datetime import datetime
 import uuid
 
 
+# @anvil.server.callable
+# def get_question():
+#     question = app_tables.questions.search()[0]
+#     return question
+
+
 @anvil.server.callable
-def get_question():
-    question = app_tables.questions.search()[0]
-    return question
+def start_session():
+    current_user = anvil.users.get_user()
+    return (
+        app_tables.questions.client_writable(user=current_user),
+        app_tables.answers.client_writable(user=current_user),
+    )
 
 
 @anvil.server.callable
