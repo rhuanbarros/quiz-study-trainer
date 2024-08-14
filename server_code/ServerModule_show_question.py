@@ -4,20 +4,19 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 
-# This is a server module. It runs on the Anvil server,
-# rather than in the user's browser.
-#
-# To allow anvil.server.call() to call functions here, we mark
-# them with @anvil.server.callable.
-# Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
-#
+from datetime import datetime
+import uuid
 
 @anvil.server.callable
 def get_question():
   question = app_tables.questions.search()[0]
   return question
+
+@anvil.server.callable
+def save_answer(answer, question):
+  app_tables.answers.add_row(
+    created_at=datetime.now(), 
+    question=question, 
+    got_it_right=answer==bool(question['answer_correct']),
+    session=str(uuid.uuid4())
+  )

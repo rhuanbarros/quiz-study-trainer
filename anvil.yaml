@@ -54,7 +54,20 @@ db_schema:
   answers:
     client: none
     server: full
-    columns: []
+    columns:
+    - name: created_at
+      admin_ui: {width: 200, order: 0}
+      type: datetime
+    - name: question
+      admin_ui: {width: 200, order: 1}
+      type: link_single
+      target: questions
+    - name: got_it_right
+      admin_ui: {order: 2, width: 200}
+      type: bool
+    - name: session
+      admin_ui: {width: 200, order: 3}
+      type: string
     title: answers
 secrets:
   GOOGLE_API_KEY:
