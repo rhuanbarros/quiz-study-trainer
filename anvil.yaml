@@ -16,7 +16,7 @@ services:
   client_config: {}
   server_config: {}
 - source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: true, enable_automatically: true, use_email: true, confirm_email: true}
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true, confirm_email: false}
   server_config: {user_table: users}
 metadata: {title: Quiz study trainer, description: 'Its poupose is to work like flashcards, but it trick questions created automaticaly. '}
 startup: {type: form, module: LayoutPage}
@@ -53,6 +53,10 @@ db_schema:
     - name: created_at
       admin_ui: {order: -1, width: 200}
       type: datetime
+    - name: user
+      admin_ui: {width: 200, order: 6.5}
+      type: link_single
+      target: users
     title: questions
   answers:
     client: none
@@ -71,6 +75,10 @@ db_schema:
     - name: session
       admin_ui: {width: 200, order: 3}
       type: string
+    - name: user
+      admin_ui: {width: 200, order: 4}
+      type: link_single
+      target: users
     title: answers
   users:
     client: none
