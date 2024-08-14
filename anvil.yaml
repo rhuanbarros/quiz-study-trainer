@@ -23,89 +23,55 @@ startup: {type: form, module: LayoutPage}
 native_deps: null
 db_schema:
   questions:
+    title: questions
     client: none
     server: full
     columns:
+    - name: created_at
+      admin_ui: {width: 200}
+      type: datetime
     - name: title
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: string
     - name: topic_description
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: string
     - name: level
-      admin_ui: {width: 200, order: 3}
+      admin_ui: {width: 200}
       type: string
     - name: question
-      admin_ui: {order: 3.25, width: 200}
-      type: string
-    - name: answer_correct
-      admin_ui: {order: 3.5, width: 200}
+      admin_ui: {width: 200}
       type: string
     - name: type
-      admin_ui: {width: 200, order: 3.375}
+      admin_ui: {width: 200}
+      type: string
+    - name: answer_correct
+      admin_ui: {width: 200}
       type: string
     - name: answers
-      admin_ui: {width: 200, order: 4.5}
+      admin_ui: {width: 200}
       type: simpleObject
     - name: explanation
-      admin_ui: {width: 200, order: 5.5}
+      admin_ui: {width: 200}
       type: string
-    - name: created_at
-      admin_ui: {order: -1, width: 200}
-      type: datetime
-    - name: user
-      admin_ui: {width: 200, order: 6.5}
-      type: link_single
-      target: users
-    title: questions
   answers:
+    title: answers
     client: none
     server: full
     columns:
     - name: created_at
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: datetime
     - name: question
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: link_single
       target: questions
     - name: got_it_right
-      admin_ui: {order: 2, width: 200}
+      admin_ui: {width: 200}
       type: bool
     - name: session
-      admin_ui: {width: 200, order: 3}
+      admin_ui: {width: 200}
       type: string
-    - name: user
-      admin_ui: {width: 200, order: 4}
-      type: link_single
-      target: users
-    title: answers
-  users:
-    client: none
-    server: full
-    columns:
-    - name: email
-      admin_ui: {order: 0, width: 200}
-      type: string
-    - name: enabled
-      admin_ui: {order: 1, width: 200}
-      type: bool
-    - name: last_login
-      admin_ui: {order: 2, width: 200}
-      type: datetime
-    - name: password_hash
-      admin_ui: {order: 3, width: 200}
-      type: string
-    - name: n_password_failures
-      admin_ui: {order: 4, width: 200}
-      type: number
-    - name: confirmed_email
-      admin_ui: {order: 5, width: 200}
-      type: bool
-    - name: signed_up
-      admin_ui: {order: 6, width: 200}
-      type: datetime
-    title: Users
 secrets:
   GOOGLE_API_KEY:
     value: {55C7JZ62MGB2UXA6: 3bG1eECWjXb1/XM0SqljonQNbdOreZb8rlSv0VHYqaWBTpbnmbwaaMWD+X1B+bQ2Cl5AqrEMMV75iFxMMkjh6a8SLycCwOJRs8FHOsS4ODR/2mc7Qg2KNxYC2FQ67PAAnC81OWkoKqt0Mjmrj88wM9kF1bKayL7QOpqvJu6G0JM0/8r3yDk=}
