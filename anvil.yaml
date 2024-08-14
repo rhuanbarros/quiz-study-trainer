@@ -15,6 +15,9 @@ services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
   server_config: {}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true, confirm_email: true}
+  server_config: {user_table: users}
 metadata: {title: Quiz study trainer, description: 'Its poupose is to work like flashcards, but it trick questions created automaticaly. '}
 startup: {type: form, module: LayoutPage}
 native_deps: null
@@ -69,6 +72,32 @@ db_schema:
       admin_ui: {width: 200, order: 3}
       type: string
     title: answers
+  users:
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {order: 1, width: 200}
+      type: bool
+    - name: last_login
+      admin_ui: {order: 2, width: 200}
+      type: datetime
+    - name: password_hash
+      admin_ui: {order: 3, width: 200}
+      type: string
+    - name: n_password_failures
+      admin_ui: {order: 4, width: 200}
+      type: number
+    - name: confirmed_email
+      admin_ui: {order: 5, width: 200}
+      type: bool
+    - name: signed_up
+      admin_ui: {order: 6, width: 200}
+      type: datetime
+    title: Users
 secrets:
   GOOGLE_API_KEY:
     value: {55C7JZ62MGB2UXA6: 3bG1eECWjXb1/XM0SqljonQNbdOreZb8rlSv0VHYqaWBTpbnmbwaaMWD+X1B+bQ2Cl5AqrEMMV75iFxMMkjh6a8SLycCwOJRs8FHOsS4ODR/2mc7Qg2KNxYC2FQ67PAAnC81OWkoKqt0Mjmrj88wM9kF1bKayL7QOpqvJu6G0JM0/8r3yDk=}
