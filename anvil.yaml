@@ -23,7 +23,7 @@ startup: {type: form, module: LayoutPage}
 native_deps: null
 db_schema:
   questions:
-    client: none
+    client: full
     server: full
     columns:
     - name: title
@@ -59,7 +59,7 @@ db_schema:
       target: users
     title: questions
   answers:
-    client: none
+    client: full
     server: full
     columns:
     - name: created_at

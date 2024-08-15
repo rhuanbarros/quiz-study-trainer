@@ -53,8 +53,16 @@ components_by_slot:
       properties: {role: card}
       type: ColumnPanel
       components:
+      - name: headline_right
+        properties: {role: subheading, text: You got it right!, foreground: '#00cc33', icon: 'fa:check', bold: true}
+        type: Label
+        layout_properties: {grid_position: 'FOKXDW,WAPWOG'}
+      - name: headline_wrong
+        properties: {role: subheading, text: You got it wrong!, foreground: '#db0000', icon: 'fa:close', bold: true}
+        type: Label
+        layout_properties: {grid_position: 'RKWYEK,SFLNBF'}
       - name: headline_2
-        properties: {role: headline, text: Explanation}
+        properties: {role: subheading, text: Explanation}
         type: Label
         layout_properties: {grid_position: 'JXHFBZ,TATAEQ'}
       - name: label_explanation
