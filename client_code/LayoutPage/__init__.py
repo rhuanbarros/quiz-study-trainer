@@ -11,8 +11,8 @@ class LayoutPage(LayoutPageTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-
         # anvil.users.login_with_form()
+        # open_form("SessionSettings") didnt work
 
     def link_about_us_click(self, **event_args):
         """This method is called when the link is clicked"""

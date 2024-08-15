@@ -19,7 +19,7 @@ services:
   client_config: {allow_signup: true, enable_automatically: true, use_email: true, confirm_email: false}
   server_config: {user_table: users}
 metadata: {title: Quiz study trainer, description: 'Its poupose is to work like flashcards, but it trick questions created automaticaly. '}
-startup: {type: form, module: LayoutPage}
+startup: {type: form, module: SessionSettings}
 native_deps: null
 db_schema:
   questions:
