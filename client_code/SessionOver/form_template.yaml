@@ -1,0 +1,12 @@
+layout: {type: 'form:LayoutPage'}
+is_package: true
+components_by_slot:
+  main_slot:
+  - name: headline_1
+    properties: {role: headline, text: Session over}
+    type: Label
+    layout_properties: {}
+  - name: headline_2
+    properties: {role: subheading, text: Results}
+    type: Label
+    layout_properties: {}

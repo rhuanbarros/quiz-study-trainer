@@ -36,14 +36,55 @@ class ShowQuestion(ShowQuestionTemplate):
         self.questions = app_tables.questions.search(
             title=ModuleGlobal.subject_matter_selected
         )
-        self.question = self.questions[0]
+        # self.ansers = app_tables.answers.search(question=q.all_of(self.questions))
+        self.answers = app_tables.answers.search()
 
-        self.label_question.text = self.question["question"]
-        self.label_subject_matter.text = self.question["title"]
-        self.label_level.text = self.question["level"]
+        # some kind of LEFT JOIN implemention because Anvil doesn't have it in free plan
+        self.questions_not_answered_yet = []
+        for question in self.questions:
+            found_answer = False
+            for answer in self.answers:
+                same_subject = (
+                    answer["question"]["title"] == ModuleGlobal.subject_matter_selected
+                )
+                same_session = (
+                    answer["session"] == self.session_uuid
+                )  # i dont want to repeat questions in the same session
+                same_user = answer["user"] == self.current_user
+                question_already_answered = answer["question"] == question
+                if (
+                    same_session
+                    and same_subject
+                    and same_user
+                    and question_already_answered
+                ):
+                    found_answer = True
+                    break
+
+            if not found_answer:
+                self.questions_not_answered_yet.append(question)
+
+        if len(self.questions_not_answered_yet) == 0:
+            # session is over
+            open_form("SessionOver")
+        else:
+            self.question = self.questions_not_answered_yet[0]
+
+            self.label_question.text = self.question["question"]
+            self.label_subject_matter.text = (
+                "Subject matter title: " + self.question["title"]
+            )
+            self.label_level.text = "Level: " + self.question["level"]
 
     def verify_answer(self, answer: bool):
-        if answer == bool(self.question["answer_correct"]):
+        answer_correct = (
+            True
+            if self.question["type"] == "true_or_false"
+            and self.question["answer_correct"] == "TRUE"
+            else False
+        )
+
+        if answer == answer_correct:
             # alert("You got it right!")
             self.headline_right.visible = True
             self.headline_wrong.visible = False
