@@ -8,6 +8,7 @@ from anvil.tables import app_tables
 
 from datetime import datetime
 import uuid
+import random
 
 from .. import ModuleGlobal
 
@@ -34,9 +35,12 @@ class ShowQuestion(ShowQuestionTemplate):
 
         # self.question = anvil.server.call('get_question')
 
-        self.questions = app_tables.questions.search(
-            title=ModuleGlobal.subject_matter_selected
-        )
+        if ModuleGlobal.subject_matter_selected == "All":
+            self.questions = app_tables.questions.search()
+        else:
+            self.questions = app_tables.questions.search(
+                title=ModuleGlobal.subject_matter_selected
+            )
         # self.ansers = app_tables.answers.search(question=q.all_of(self.questions))
         self.answers = app_tables.answers.search()
 
@@ -67,8 +71,10 @@ class ShowQuestion(ShowQuestionTemplate):
 
         if len(self.questions_not_answered_yet) == 0:
             # session is over
-            open_form("SessionOver")
+            alert("There is no questions.")
+            open_form("SessionSettings")
         else:
+            random.shuffle(self.questions_not_answered_yet)
             self.question = self.questions_not_answered_yet[0]
 
             self.label_question.text = self.question["question"]
@@ -97,7 +103,7 @@ class ShowQuestion(ShowQuestionTemplate):
         # jsut for test pourposes
         if self.current_user is None:
             self.current_user = app_tables.users.search()[0]
-        
+
         app_tables.answers.add_row(
             created_at=datetime.now(),
             question=self.question,

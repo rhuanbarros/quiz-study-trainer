@@ -27,7 +27,8 @@ class SessionSettings(SessionSettingsTemplate):
             (row["title"] for row in app_tables.questions.search())
         )
 
-        self.drop_down_subject_matter.items = subject_matter_distinct
+        self.drop_down_subject_matter.items = ["All"]
+        self.drop_down_subject_matter.items += subject_matter_distinct
 
     def button_start_click(self, **event_args):
         """This method is called when the button is clicked"""
