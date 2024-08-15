@@ -24,7 +24,7 @@ native_deps: null
 db_schema:
   questions:
     title: questions
-    client: none
+    client: full
     server: full
     columns:
     - name: created_at
@@ -56,7 +56,7 @@ db_schema:
       type: string
   answers:
     title: answers
-    client: none
+    client: full
     server: full
     columns:
     - name: created_at
