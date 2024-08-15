@@ -31,6 +31,11 @@ components:
     type: Link
     layout_properties: {grid_position: 'YAXQUP,KXVGLH'}
     event_bindings: {click: link_generate_click}
+  - name: link_study_report
+    properties: {text: Study report}
+    type: Link
+    layout_properties: {grid_position: 'STTJHV,MMHWPS'}
+    event_bindings: {click: link_study_report_click}
   - name: link_about_us
     properties: {text: About us}
     type: Link

@@ -1,0 +1,21 @@
+layout:
+  type: form:LayoutPage
+  form_event_bindings: {show: form_show}
+is_package: true
+components_by_slot:
+  main_slot:
+  - name: headline_1
+    properties: {role: headline, text: Study report}
+    type: Label
+    layout_properties: {}
+  - name: text_area_1
+    properties:
+      text: |-
+        TODO:
+        - show how the progress is for each subject matter studied (I need to define this better)
+        - plot some graphs of evolution
+        - show questions that I already have memorized
+        - show quentions that I keep get it wrong
+      height: 226.09091186523438
+    type: TextArea
+    layout_properties: {}

@@ -23,6 +23,9 @@ class LayoutPage(LayoutPageTemplate):
         open_form("GenerateQuestions")
 
     def reset_links(self, **event_args):
+        self.link_session_settings.role = ""
+        self.link_generate.role = ""
+        self.link_study_report.role = ""
         self.link_about_us.role = ""
 
     def form_show(self, **event_args):
@@ -32,3 +35,7 @@ class LayoutPage(LayoutPageTemplate):
     def link_session_settings_click(self, **event_args):
         """This method is called when the link is clicked"""
         open_form("SessionSettings")
+
+    def link_study_report_click(self, **event_args):
+        """This method is called when the link is clicked"""
+        open_form("StudyReport")
