@@ -1,4 +1,6 @@
-layout: {type: 'form:LayoutPage'}
+layout:
+  type: form:LayoutPage
+  form_event_bindings: {show: form_show}
 is_package: true
 components_by_slot:
   main_slot:
@@ -9,4 +11,20 @@ components_by_slot:
   - name: headline_2
     properties: {role: subheading, text: Results}
     type: Label
+    layout_properties: {}
+  - name: label_correct
+    properties: {text: 'Correct answers:'}
+    type: Label
+    layout_properties: {}
+  - name: label_incorrect
+    properties: {text: 'Incorrect answers:'}
+    type: Label
+    layout_properties: {}
+  - name: label_total
+    properties: {text: 'Total of questions answered: '}
+    type: Label
+    layout_properties: {}
+  - name: button_start_again
+    properties: {text: Start again, role: primary-color, spacing_above: large}
+    type: Button
     layout_properties: {}

@@ -19,6 +19,7 @@ class ShowQuestion(ShowQuestionTemplate):
 
         self.current_user = anvil.users.get_user()
         self.session_uuid = str(uuid.uuid4())
+        ModuleGlobal.session_uuid = self.session_uuid
 
         # print("self.session_uuid")
         # print(self.session_uuid)
@@ -77,14 +78,14 @@ class ShowQuestion(ShowQuestionTemplate):
             self.label_level.text = "Level: " + self.question["level"]
 
     def verify_answer(self, answer: bool):
-        answer_correct = (
+        answer_correct_fixed = (
             True
             if self.question["type"] == "true_or_false"
             and self.question["answer_correct"] == "TRUE"
             else False
         )
 
-        if answer == answer_correct:
+        if answer == answer_correct_fixed:
             # alert("You got it right!")
             self.headline_right.visible = True
             self.headline_wrong.visible = False
@@ -93,11 +94,14 @@ class ShowQuestion(ShowQuestionTemplate):
             self.headline_right.visible = False
             self.headline_wrong.visible = True
 
-        # anvil.server.call("save_answer", answer, self.question)
+        # jsut for test pourposes
+        if self.current_user is None:
+            self.current_user = app_tables.users.search()[0]
+        
         app_tables.answers.add_row(
             created_at=datetime.now(),
             question=self.question,
-            got_it_right=answer == bool(self.question["answer_correct"]),
+            got_it_right=answer == answer_correct_fixed,
             session=self.session_uuid,
             user=self.current_user,
         )
@@ -118,3 +122,7 @@ class ShowQuestion(ShowQuestionTemplate):
     def button_next_click(self, **event_args):
         """This method is called when the button is clicked"""
         self.get_question()
+
+    def button_endsession_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        open_form("SessionOver")

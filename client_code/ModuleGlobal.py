@@ -5,3 +5,4 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 
 subject_matter_selected = None
+session_uuid = None

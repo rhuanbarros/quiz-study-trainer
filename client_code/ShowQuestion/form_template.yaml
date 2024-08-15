@@ -77,6 +77,7 @@ components_by_slot:
         properties: {text: End session, role: raised}
         type: Button
         layout_properties: {grid_position: 'FGBONQ,YCBWVE'}
+        event_bindings: {click: button_endsession_click}
       - name: button_elaboratemore
         properties: {text: Elaborate more the explanation, role: raised}
         type: Button
