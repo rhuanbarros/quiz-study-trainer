@@ -12,12 +12,14 @@ components_by_slot:
     properties: {text: Select the subject matter}
     type: Label
     layout_properties: {}
-  - name: drop_down_1
+  - name: drop_down_subject_matter
     properties: {}
     type: DropDown
     layout_properties: {}
-  - name: button_1
+    data_bindings:
+    - {property: tag, code: '', writeback: false}
+  - name: button_start
     properties: {text: Start session, role: primary-color}
     type: Button
     layout_properties: {}
-    event_bindings: {click: button_1_click}
+    event_bindings: {click: button_start_click}

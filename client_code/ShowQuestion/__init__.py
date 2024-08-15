@@ -9,6 +9,8 @@ from anvil.tables import app_tables
 from datetime import datetime
 import uuid
 
+from .. import ModuleGlobal
+
 
 class ShowQuestion(ShowQuestionTemplate):
     def __init__(self, **properties):
@@ -18,8 +20,8 @@ class ShowQuestion(ShowQuestionTemplate):
         self.current_user = anvil.users.get_user()
         self.session_uuid = str(uuid.uuid4())
 
-        print("self.session_uuid")
-        print(self.session_uuid)
+        # print("self.session_uuid")
+        # print(self.session_uuid)
 
     def form_show(self, **event_args):
         """This method is called when the form is shown on the page"""
@@ -30,7 +32,10 @@ class ShowQuestion(ShowQuestionTemplate):
         self.linear_panel_explanation.visible = False
 
         # self.question = anvil.server.call('get_question')
-        self.questions = app_tables.questions.search()
+
+        self.questions = app_tables.questions.search(
+            title=ModuleGlobal.subject_matter_selected
+        )
         self.question = self.questions[0]
 
         self.label_question.text = self.question["question"]

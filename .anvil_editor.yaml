@@ -5,7 +5,8 @@ unique_ids:
     LayoutPage: TPCG3YC7SDPHQNSODAUTFEPBTZ3G4YTM
     SessionSettings: '1723308527153656987085573.3698'
     ShowQuestion: '1723547679088868763887073.0223'
-  modules: {}
+  modules:
+    ModuleGlobal: '1723722617498597209983719.3921'
   server_modules:
     ServerModule_generate_questions: '1723314442045852541918594.4406'
     ServerModule_show_question: '1723548953679831990202487.5679'
