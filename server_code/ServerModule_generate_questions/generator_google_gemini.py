@@ -5,8 +5,10 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 
+# This module doesn't work. But some one could use the code to generate questions from its computer and send to the database in other way.
+# FailedPrecondition: 400 Gemini API free tier is not available in your country. Please enable billing on your project in Google AI Studio.
 
-import os
+# import os
 import google.generativeai as genai
 
 key_gemini = anvil.secrets.get_secret("GOOGLE_API_KEY")
