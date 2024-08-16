@@ -6,23 +6,8 @@ from anvil.tables import app_tables
 import anvil.server
 
 from datetime import datetime
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
-from langchain_core.messages import AIMessage
-from typing import List
-# import json_repair
-
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
-from langchain_core.messages import AnyMessage, SystemMessage, HumanMessage, ChatMessage
-
-import json
-
-# from langchain_groq import ChatGroq
-
-# key_google = anvil.secrets.get_secret("GOOGLE_API_KEY")
-# llm_google = ChatGoogleGenerativeAI(model="gemini-1.5-flash", convert_system_message_to_human=True, google_api_key=key_google)
-# llm_google = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=key_google)
 
 from langchain_core.pydantic_v1 import BaseModel, Field
 
@@ -57,10 +42,6 @@ class QuestionList(BaseModel):
         description="list of Question"
     )
 
-# key_groq = anvil.secrets.get_secret("GROQ_API_KEY")
-# llm_groq = ChatGroq(model="llama-3.1-70b-versatile", api_key=key_groq)
-# llm_QuestionList = llm_groq.with_structured_output(QuestionList)
-
 object_schema = """{
                     "properties": {
                       "topic_description": {
@@ -87,6 +68,7 @@ object_schema = """{
                     "required": ["topic_description", "level", "question", "answer_correct", "explanation"]
                   }
                   """
+
 prompt_question_generator = PromptTemplate(
   template="""
               TASK CONTEXT:
@@ -121,44 +103,9 @@ prompt_question_generator = PromptTemplate(
       partial_variables={"object_schema": object_schema},
   )
 
-# def json_parser(message: AIMessage) -> List[dict]:
-#   return json_repair.loads(message.content)
-
 model_name = "gpt-4o-mini"
 
 key_openai = anvil.secrets.get_secret("OPENAI_API_KEY")
 llm = ChatOpenAI(model=model_name, api_key=key_openai)
 llm_QuestionList = llm.with_structured_output(QuestionList)
-
-# key_google = anvil.secrets.get_secret("GOOGLE_API_KEY")
-# llm_google = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=key_google)
-# llm_QuestionList = llm_google.with_structured_output(QuestionList)
-
-@anvil.server.callable
-def generate_questions(title, parameters):
-  print( "------------------- generate_questions FUNCTION -------------------" )
-
-  # response = llm.invoke("Write me a ballad about LangChain")
-  # print(response)
-  
-  # chain = prompt_question_generator | llm_google        
-  chain = prompt_question_generator | llm_QuestionList        
-  questionList = chain.invoke(parameters)        
-  # questions = json_parser(response)
-
-  print(questionList.question_itens)
-  
-  for question in questionList.question_itens:
-    # add to the database
-    app_tables.questions.add_row(
-      created_at=datetime.now(), 
-      title=title, 
-      topic_description=question.topic_description, 
-      level=question.level,
-      question=question.question, 
-      type="true_or_false",
-      answer_correct=question.answer_correct,
-      answers=None,
-      explanation=question.explanation
-    )
-
+chain = prompt_question_generator | llm_QuestionList
