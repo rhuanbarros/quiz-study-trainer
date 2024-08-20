@@ -6,3 +6,4 @@ json-repair
 langchain-openai
 langchain-groq
 google-generativeai
+groq

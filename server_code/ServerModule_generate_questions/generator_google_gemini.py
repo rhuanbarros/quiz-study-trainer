@@ -11,6 +11,7 @@ import anvil.server
 # import os
 import google.generativeai as genai
 
+
 key_gemini = anvil.secrets.get_secret("GOOGLE_API_KEY")
 
 genai.configure(api_key=key_gemini)

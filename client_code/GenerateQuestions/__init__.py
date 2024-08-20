@@ -55,10 +55,9 @@ class GenerateQuestions(GenerateQuestionsTemplate):
                 "level": level,
                 "additional_task_description": self.text_area_additional_task_description.text,
                 "domain_knowledge": self.text_area_list_topics.text,
+                "title": self.text_box_title.text,
             }
 
-            anvil.server.call(
-                "generate_questions", self.text_box_title.text, parameters
-            )
+            anvil.server.call("generate_questions", parameters)
 
         alert("Generation completed!")

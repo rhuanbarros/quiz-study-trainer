@@ -9,29 +9,35 @@ from datetime import datetime
 
 from . import generator_openai
 from . import generator_google_gemini
+from . import generator_groq
 
 
 @anvil.server.callable
-def generate_questions(title, parameters):
+def generate_questions(parameters):
     print("------------------- generate_questions FUNCTION -------------------")
 
-    generator_google_gemini.generate_questions()
+    # generator_google_gemini.generate_questions() #dont work
+    # questionList = generator_openai.chain.invoke(parameters) #not free
+    questions = generator_groq.generate_questions(parameters)
 
-    # questionList = generator_openai.chain.invoke(parameters)
-    # # questions = json_parser(response)
+    print(questions)
 
-    # print(questionList.question_itens)
+    if not isinstance(questions, list):
+        questions = list(questions)
 
-    # for question in questionList.question_itens:
-    #     # add to the database
-    #     app_tables.questions.add_row(
-    #         created_at=datetime.now(),
-    #         title=title,
-    #         topic_description=question.topic_description,
-    #         level=question.level,
-    #         question=question.question,
-    #         type="true_or_false",
-    #         answer_correct=question.answer_correct,
-    #         answers=None,
-    #         explanation=question.explanation,
-    #     )
+    for question in questions:
+        print(question)
+        
+
+        # add to the database
+        app_tables.questions.add_row(
+            created_at=datetime.now(),
+            title=parameters["title"],
+            topic_description=question["topic_description"],
+            level=question["level"],
+            question=question["question"],
+            type="true_or_false",
+            answer_correct=question["answer_correct"],
+            answers=None,
+            explanation=question["explanation"],
+        )
