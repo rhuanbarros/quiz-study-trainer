@@ -12,32 +12,30 @@ key_groq = anvil.secrets.get_secret("GROQ_API_KEY")
 client = Groq(api_key=key_groq)
 
 
-json_schema = """{
-                    "properties": {
-                      "topic_description": {
-                        "type": "string",
-                        "description": "A sentence describing the sub-topic to which the question belongs. That means this sentence should specify in a granular level what specific sub-topic the question belongs to. It should be abstract in a way that other questions could be put in this description too. Use between 5 and 10 words."
-                      },
-                      "level": {
-                        "type": "string",
-                        "description": "The difficulty level of the question. It should be only one of the following options: 'beginner', 'intermediate', 'advanced'."
-                      },
-                      "question": {
-                        "type": "string",
-                        "description": "The actual question text. It should be a question of type TRUE or FALSE. It means that the questions should be an assertion that could be answered with TRUE or FALSE."
-                      },
-                      "answer_correct": {
-                        "type": "string",
-                        "description": "The correct answer to the question. It should be only one of the following options: TRUE or FALSE"
-                      },
-                      "explanation": {
-                        "type": "string",
-                        "description": "An explanation or solution to the question."
-                      }
-                    },
-                    "required": ["topic_description", "level", "question", "answer_correct", "explanation"]
-                  }
-                  """
+json_schema = """
+  {
+    "topic_description": {
+      "type": "string",
+      "description": "A sentence describing the sub-topic to which the question belongs. That means this sentence should specify in a granular level what specific sub-topic the question belongs to. It should be abstract in a way that other questions could be put in this description too. Use between 5 and 10 words."
+    },
+    "level": {
+      "type": "string",
+      "description": "The difficulty level of the question. It should be only one of the following options: 'beginner', 'intermediate', 'advanced'."
+    },
+    "question": {
+      "type": "string",
+      "description": "The actual question text. It should be a question of type TRUE or FALSE. It means that the questions should be an assertion that could be answered with TRUE or FALSE."
+    },
+    "answer_correct": {
+      "type": "string",
+      "description": "The correct answer to the question. It should be only one of the following options: TRUE or FALSE"
+    },
+    "explanation": {
+      "type": "string",
+      "description": "An explanation or solution to the question."
+    }
+  }
+"""
 
 prompt_question_generator = """
               TASK CONTEXT:

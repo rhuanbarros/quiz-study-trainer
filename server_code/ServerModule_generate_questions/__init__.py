@@ -23,12 +23,10 @@ def generate_questions(parameters):
     print(questions)
 
     if not isinstance(questions, list):
-        questions = list(questions)
+        questions = [questions]
 
     for question in questions:
         print(question)
-        
-
         # add to the database
         app_tables.questions.add_row(
             created_at=datetime.now(),
