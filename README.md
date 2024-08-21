@@ -24,6 +24,15 @@ I created this project to enable development with anyone who needs a similar sol
 ## Online version hosted
 You can access a free online version of this app hosted on Anvil Cloud at https://ill-informed-careless-panther.anvil.app/
 
+
+## Key Points
+- 🐍 **Python**: Completely coded in Python using the Anvil framework (frontend and backend).
+- 📈 **Enhanced Learning**: Customized prompt generation for better question creation.
+- 📚 **Integrated Knowledge**: Query LLM model directly for explanations without leaving the app.
+- 🗂️ **Result Tracking**: Keep track of study progress and quiz results over time.
+- ☁️ **Cloud Accessibility**: Hosted in the cloud for access on mobile devices.
+
+
 ## TODO
 - Study report
   - show how the progress is for each subject matter studied (I need to define this better)
@@ -33,13 +42,4 @@ You can access a free online version of this app hosted on Anvil Cloud at https:
 
 - Show question
   - Create a ranking algorithm to sort the questions already answered to allow some kind of space repetition memorization.
-
-
-
-## Key Points
-- 🐍 **Python**: Completely coded in Python using the Anvil framework (frontend and backend).
-- 📈 **Enhanced Learning**: Customized prompt generation for better question creation.
-- 📚 **Integrated Knowledge**: Query LLM model directly for explanations without leaving the app.
-- 🗂️ **Result Tracking**: Keep track of study progress and quiz results over time.
-- ☁️ **Cloud Accessibility**: Hosted in the cloud for access on mobile devices.
 
