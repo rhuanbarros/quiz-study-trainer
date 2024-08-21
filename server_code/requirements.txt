@@ -7,3 +7,4 @@ langchain-openai
 langchain-groq
 google-generativeai
 groq
+pandas

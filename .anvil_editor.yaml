@@ -14,6 +14,7 @@ unique_ids:
     ServerModule_generate_questions.generator_google_gemini: '1723808585912206629452268.12912'
     ServerModule_generate_questions.generator_groq: '1724152532302753218359598.0302'
     ServerModule_generate_questions.generator_openai: '1723808550347314797004834.08734'
+    ServerModule_study_report: '1724276229852500079613326.702'
   assets:
     standard-page.html: KC3TCX4DGW4SCSH6YBDP34UXBDU7LNYK
     theme.css: 6CYOA2MHZXOZJTMONZSZU3ZE4QJLDHQO

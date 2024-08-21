@@ -6,6 +6,8 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
+import pandas as pd
+
 
 class StudyReport(StudyReportTemplate):
     def __init__(self, **properties):
@@ -18,3 +20,5 @@ class StudyReport(StudyReportTemplate):
         """This method is called when the form is shown on the page"""
         self.layout.reset_links()
         self.layout.link_study_report.role = "selected"
+
+        
