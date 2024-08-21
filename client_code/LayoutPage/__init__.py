@@ -14,6 +14,7 @@ class LayoutPage(LayoutPageTemplate):
 
         anvil.users.login_with_form()
 
+        # ok
         # open_form("SessionSettings") didnt work
 
     def link_about_us_click(self, **event_args):
