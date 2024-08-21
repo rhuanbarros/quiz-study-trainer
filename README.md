@@ -1,5 +1,7 @@
 # 📚 Machine Learning Interview Preparation Quiz Trainer 
 
+A better alternative to flashcards!
+
 ## 🚀 Problem Addressed
 I have needed to study some topics in machine learning, but I haven’t found any good specific quizzes about them. 
 
