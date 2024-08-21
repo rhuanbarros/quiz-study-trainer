@@ -7,6 +7,7 @@ import anvil.server
 
 import pand
 
+
 @anvil.server.callable
 def get_df_by_topic():
     answers = app_tables.answers.search()
