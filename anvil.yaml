@@ -116,3 +116,4 @@ secrets:
   GROQ_API_KEY:
     value: {55C7JZ62MGB2UXA6: DODS4uTOYX1qWqW4TzW/OsFMhfGdens6pssffoFexYA19jHjYyxJ7l7yhnViQ+xLF7q8KiPYxcG1UmWSZLEFT+YvscTqdqTdOdTF3U+Bjs2cMDtUuXF+xrtVKEM3ugY8+6D5n18W3CO8iFTR7NxDAX6lnA1PrGc18AUgidu2JVi/ASeMGdqbDb2InYwGpVBoLIXkI+J5MA==}
     type: secret
+uplink_visible: true
