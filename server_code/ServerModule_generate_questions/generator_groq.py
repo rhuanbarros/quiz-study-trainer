@@ -93,3 +93,37 @@ def generate_questions(parameters):
     questions = json_repair.loads(completion.content)
 
     return questions
+
+
+prompt_elaborate_more = """
+                TASK CONTEXT:
+                I am studying machine learning practicing some questions.
+                
+                TASK DESCRIPTION:
+                I need you to act like a professor.
+                I need you to think critical and answer if the question provided is a TRUE statement or a FALSE.
+                You should give a elaborated explanation.
+                                
+                TASK REQUIREMENTS:
+                Use at least 2 sentences to explain your answer.
+                
+                QUESTION:
+                {question}
+            """
+
+
+def elaborate_more(question):
+    prompt_elaborate_more_formated = prompt_elaborate_more.format(question=question)
+
+    response = client.chat.completions.create(
+        model="llama3-8b-8192",
+        messages=[{"role": "user", "content": prompt_elaborate_more_formated}],
+        temperature=1,
+        max_tokens=2420,
+        top_p=1,
+        stream=False,
+        stop=None,
+    )
+
+    completion = response.choices[0].message
+    return completion.content

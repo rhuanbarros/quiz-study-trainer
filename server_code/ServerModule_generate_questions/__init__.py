@@ -39,3 +39,11 @@ def generate_questions(parameters):
             answers=None,
             explanation=question["explanation"],
         )
+
+
+@anvil.server.callable
+def elaborate_more(question):
+    print("elaborate_more server")
+    explanation = generator_groq.elaborate_more(question)
+
+    return explanation

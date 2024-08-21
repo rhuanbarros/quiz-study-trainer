@@ -28,10 +28,12 @@ class ShowQuestion(ShowQuestionTemplate):
     def form_show(self, **event_args):
         """This method is called when the form is shown on the page"""
         self.get_question()
+        # self.card_explanation_elaborate_more.visible = False
 
     def get_question(self):
         self.column_panel_btnsanswer.visible = True
         self.linear_panel_explanation.visible = False
+        self.card_explanation_elaborate_more.visible = False
 
         # self.question = anvil.server.call('get_question')
 
@@ -84,14 +86,14 @@ class ShowQuestion(ShowQuestionTemplate):
             self.label_level.text = "Level: " + self.question["level"]
 
     def verify_answer(self, answer: bool):
-        answer_correct_fixed = (
+        answer_db_correct_fixed = (
             True
             if self.question["type"] == "true_or_false"
             and self.question["answer_correct"] == "TRUE"
             else False
         )
 
-        if answer == answer_correct_fixed:
+        if answer == answer_db_correct_fixed:
             # alert("You got it right!")
             self.headline_right.visible = True
             self.headline_wrong.visible = False
@@ -107,11 +109,14 @@ class ShowQuestion(ShowQuestionTemplate):
         app_tables.answers.add_row(
             created_at=datetime.now(),
             question=self.question,
-            got_it_right=answer == answer_correct_fixed,
+            got_it_right=answer == answer_db_correct_fixed,
             session=self.session_uuid,
             user=self.current_user,
         )
 
+        self.show_answer()
+
+    def show_answer(self):
         self.column_panel_btnsanswer.visible = False
         self.linear_panel_explanation.visible = True
 
@@ -132,3 +137,17 @@ class ShowQuestion(ShowQuestionTemplate):
     def button_endsession_click(self, **event_args):
         """This method is called when the button is clicked"""
         open_form("SessionOver")
+
+    def button_idontknow_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        self.headline_right.visible = False
+        self.headline_wrong.visible = False
+        self.show_answer()
+
+    def button_elaboratemore_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        explanation_elaborate_more = anvil.server.call(
+            "elaborate_more", self.question["question"]
+        )
+        self.card_explanation_elaborate_more.visible = True
+        self.label_explanation_elaborate_more.text = explanation_elaborate_more
