@@ -1,4 +1,4 @@
-# 📚 Machine Learning Interview Preparation Trainer
+# 📚 Machine Learning Interview Preparation Quiz Trainer 
 
 ## 🚀 Problem Addressed
 I have needed to study some topics in machine learning, but I haven’t found any good specific quizzes about them. 
@@ -27,7 +27,8 @@ You can access a free online version of this app hosted on Anvil Cloud at https:
 
 ## Key Points
 - 🐍 **Python**: Completely coded in Python using the Anvil framework (frontend and backend).
-- 📈 **Enhanced Learning**: Customized prompt generation for better question creation.
+- 🧠 **Prompt engeneering**: Customized prompt for better question creation.
+- 📈 **Enhanced Learning**: Improves memorization of concepts similiar to Spaced Repetion techinique.
 - 📚 **Integrated Knowledge**: Query LLM model directly for explanations without leaving the app.
 - 🗂️ **Result Tracking**: Keep track of study progress and quiz results over time.
 - ☁️ **Cloud Accessibility**: Hosted in the cloud for access on mobile devices.
