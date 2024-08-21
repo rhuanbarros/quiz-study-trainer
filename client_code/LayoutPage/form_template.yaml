@@ -16,6 +16,15 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+  components:
+  - name: link_1
+    properties: {url: 'https://github.com/rhuanbarros/quiz-study-trainer', text: Github repository}
+    type: Link
+    layout_properties: {expand: false}
+    components: []
+  - name: image_1
+    properties: {source: _/theme/github-icon-svgrepo-com.svg, height: 31}
+    type: Image
 - name: column_panel_1
   properties: {}
   type: ColumnPanel
