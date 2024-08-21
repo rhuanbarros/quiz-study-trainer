@@ -6,8 +6,6 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 
-import pandas as pd
-
 
 class StudyReport(StudyReportTemplate):
     def __init__(self, **properties):
@@ -21,4 +19,8 @@ class StudyReport(StudyReportTemplate):
         self.layout.reset_links()
         self.layout.link_study_report.role = "selected"
 
-        
+        content = anvil.server.call("get_df_by_topic")
+        self.rich_text_by_topic.content = content
+
+        content = anvil.server.call("get_df_by_question")
+        self.rich_text_by_question.content = content

@@ -12,7 +12,7 @@ class LayoutPage(LayoutPageTemplate):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # anvil.users.login_with_form()
+        anvil.users.login_with_form()
 
         # open_form("SessionSettings") didnt work
 
