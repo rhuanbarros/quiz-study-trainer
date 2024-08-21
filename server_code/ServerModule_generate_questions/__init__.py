@@ -38,6 +38,7 @@ def generate_questions(parameters):
             answer_correct=question["answer_correct"],
             answers=None,
             explanation=question["explanation"],
+            user=anvil.users.get_user(),
         )
 
 

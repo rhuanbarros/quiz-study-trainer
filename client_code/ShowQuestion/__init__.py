@@ -103,8 +103,8 @@ class ShowQuestion(ShowQuestionTemplate):
             self.headline_wrong.visible = True
 
         # jsut for test pourposes
-        if self.current_user is None:
-            self.current_user = app_tables.users.search()[0]
+        # if self.current_user is None:
+        #     self.current_user = app_tables.users.search()[0]
 
         app_tables.answers.add_row(
             created_at=datetime.now(),
