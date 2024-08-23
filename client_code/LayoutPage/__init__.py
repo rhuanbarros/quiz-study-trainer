@@ -12,9 +12,8 @@ class LayoutPage(LayoutPageTemplate):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        anvil.users.login_with_form()
+        # anvil.users.login_with_form()
 
-        # ok
         # open_form("SessionSettings") didnt work
 
     def link_about_us_click(self, **event_args):

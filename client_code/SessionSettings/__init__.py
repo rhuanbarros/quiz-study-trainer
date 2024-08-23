@@ -23,8 +23,11 @@ class SessionSettings(SessionSettingsTemplate):
         self.layout.reset_links()
         self.layout.link_session_settings.role = "selected"
 
-        subject_matter_distinct = set(
-            (row["title"] for row in app_tables.questions.search())
+        self.get_titles()
+
+    def get_titles(self):
+        subject_matter_distinct = (
+            row["title"] for row in app_tables.question_titles.search()
         )
 
         self.drop_down_subject_matter.items = ["All"]
@@ -36,3 +39,17 @@ class SessionSettings(SessionSettingsTemplate):
             self.drop_down_subject_matter.selected_value
         )
         open_form("ShowQuestion")
+
+    def button_update_click(self, **event_args):
+        """This method is called when the button is clicked"""
+
+        app_tables.question_titles.delete_all_rows()
+
+        subject_matter_distinct = set(
+            (row["title"] for row in app_tables.questions.search())
+        )
+
+        for row in subject_matter_distinct:
+            app_tables.question_titles.add_row(title=row)
+
+        self.get_titles()

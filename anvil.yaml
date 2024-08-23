@@ -106,6 +106,14 @@ db_schema:
       admin_ui: {order: 6, width: 200}
       type: datetime
     title: Users
+  question_titles:
+    client: full
+    server: full
+    columns:
+    - name: title
+      admin_ui: {width: 200, order: 0}
+      type: string
+    title: question_titles
 secrets:
   GOOGLE_API_KEY:
     value: {55C7JZ62MGB2UXA6: 3bG1eECWjXb1/XM0SqljonQNbdOreZb8rlSv0VHYqaWBTpbnmbwaaMWD+X1B+bQ2Cl5AqrEMMV75iFxMMkjh6a8SLycCwOJRs8FHOsS4ODR/2mc7Qg2KNxYC2FQ67PAAnC81OWkoKqt0Mjmrj88wM9kF1bKayL7QOpqvJu6G0JM0/8r3yDk=}

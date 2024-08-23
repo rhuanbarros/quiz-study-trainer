@@ -8,6 +8,11 @@ components_by_slot:
     properties: {role: headline, text: Session settings}
     type: Label
     layout_properties: {}
+  - name: button_update
+    properties: {text: update titles}
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: button_update_click}
   - name: label_1
     properties: {text: Select the subject matter}
     type: Label
