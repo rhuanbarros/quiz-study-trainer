@@ -19,74 +19,32 @@ class ShowQuestion(ShowQuestionTemplate):
         self.init_components(**properties)
 
         self.current_user = anvil.users.get_user()
-        self.session_uuid = str(uuid.uuid4())
-        ModuleGlobal.session_uuid = self.session_uuid
+        # self.session_uuid = str(uuid.uuid4())
+        # ModuleGlobal.session_uuid = self.session_uuid
 
         # print("self.session_uuid")
         # print(self.session_uuid)
 
+        self.get_question()
+
     def form_show(self, **event_args):
         """This method is called when the form is shown on the page"""
         # self.card_explanation_elaborate_more.visible = False
-        self.get_question()
+        # self.get_question()
 
     def get_question(self):
-        if ModuleGlobal.session_revision:
-            self.get_question_revision()
-        else:
-            self.get_question_custom_training()
+        print("get_question")
 
-    def get_question_revision(self):
-        pass
-
-    def get_question_custom_training(self):
         self.column_panel_btnsanswer.visible = True
         self.linear_panel_explanation.visible = False
         self.card_explanation_elaborate_more.visible = False
 
-        # self.question = anvil.server.call('get_question')
-
-        if ModuleGlobal.subject_matter_selected == "All":
-            self.questions = app_tables.questions.search()
-        else:
-            self.questions = app_tables.questions.search(
-                title=ModuleGlobal.subject_matter_selected
-            )
-        # self.ansers = app_tables.answers.search(question=q.all_of(self.questions))
-        self.answers = app_tables.answers.search()
-
-        # some kind of LEFT JOIN implemention because Anvil doesn't have it in free plan
-        self.questions_not_answered_yet = []
-        for question in self.questions:
-            found_answer = False
-            for answer in self.answers:
-                same_subject = (
-                    answer["question"]["title"] == ModuleGlobal.subject_matter_selected
-                )
-                same_session = (
-                    answer["session"] == self.session_uuid
-                )  # i dont want to repeat questions in the same session
-                same_user = answer["user"] == self.current_user
-                question_already_answered = answer["question"] == question
-                if (
-                    same_session
-                    and same_subject
-                    and same_user
-                    and question_already_answered
-                ):
-                    found_answer = True
-                    break
-
-            if not found_answer:
-                self.questions_not_answered_yet.append(question)
-
-        if len(self.questions_not_answered_yet) == 0:
+        if len(ModuleGlobal.questions) == 0:
             # session is over
-            alert("There is no questions.")
+            alert("There is no questions anymore.")
             open_form("SessionSettings")
         else:
-            random.shuffle(self.questions_not_answered_yet)
-            self.question = self.questions_not_answered_yet[0]
+            self.question = ModuleGlobal.questions.pop()
 
             self.label_question.text = self.question["question"]
             self.label_subject_matter.text = (

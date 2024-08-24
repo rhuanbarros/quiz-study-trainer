@@ -8,13 +8,18 @@ from anvil.tables import app_tables
 
 from .. import ModuleGlobal
 
+import uuid
+import random
+
 
 class SessionSettings(SessionSettingsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # Any code you write here will run before the form opens.
+        self.current_user = anvil.users.get_user()
+        self.session_uuid = str(uuid.uuid4())
+        ModuleGlobal.session_uuid = self.session_uuid
 
     def form_show(self, **event_args):
         """This method is called when the form is shown on the page"""
@@ -37,9 +42,48 @@ class SessionSettings(SessionSettingsTemplate):
         """This method is called when the button is clicked"""
         ModuleGlobal.session_revision = False
 
-        ModuleGlobal.subject_matter_selected = (
-            self.drop_down_subject_matter.selected_value
-        )
+        # ModuleGlobal.subject_matter_selected = (
+        #     self.drop_down_subject_matter.selected_value
+        # )
+
+        if self.drop_down_subject_matter.selected_value == "All":
+            self.questions = app_tables.questions.search()
+        else:
+            self.questions = app_tables.questions.search(
+                title=ModuleGlobal.subject_matter_selected
+            )
+        # self.ansers = app_tables.answers.search(question=q.all_of(self.questions))
+        self.answers = app_tables.answers.search()
+
+        # some kind of LEFT JOIN implemention because Anvil doesn't have it in free plan
+        self.questions_not_answered_yet = []
+        for question in self.questions:
+            found_answer = False
+            for answer in self.answers:
+                same_subject = (
+                    answer["question"]["title"] == ModuleGlobal.subject_matter_selected
+                )
+                same_session = (
+                    answer["session"] == self.session_uuid
+                )  # i dont want to repeat questions in the same session
+                same_user = answer["user"] == self.current_user
+                question_already_answered = answer["question"] == question
+                if (
+                    same_session
+                    and same_subject
+                    and same_user
+                    and question_already_answered
+                ):
+                    found_answer = True
+                    break
+
+            if not found_answer:
+                self.questions_not_answered_yet.append(question)
+
+        random.shuffle(self.questions_not_answered_yet)
+
+        ModuleGlobal.questions = self.questions_not_answered_yet
+
         open_form("ShowQuestion")
 
     def button_update_click(self, **event_args):

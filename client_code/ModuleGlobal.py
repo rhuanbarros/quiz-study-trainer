@@ -6,4 +6,6 @@ from anvil.tables import app_tables
 
 subject_matter_selected = None
 session_uuid = None
-session_revision = False
+# session_revision = False
+
+questions = []
