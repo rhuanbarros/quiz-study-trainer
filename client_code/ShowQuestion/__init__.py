@@ -77,7 +77,7 @@ class ShowQuestion(ShowQuestionTemplate):
             created_at=datetime.now(),
             question=self.question,
             got_it_right=answer == answer_db_correct_fixed,
-            session=self.session_uuid,
+            session=ModuleGlobal.session_uuid,
             user=self.current_user,
         )
 

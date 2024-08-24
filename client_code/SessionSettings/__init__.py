@@ -50,10 +50,17 @@ class SessionSettings(SessionSettingsTemplate):
             self.questions = app_tables.questions.search()
         else:
             self.questions = app_tables.questions.search(
-                title=ModuleGlobal.subject_matter_selected
+                title=self.drop_down_subject_matter.selected_value
             )
         # self.ansers = app_tables.answers.search(question=q.all_of(self.questions))
         self.answers = app_tables.answers.search()
+
+        # print("len(self.questions)")
+        # print(len(self.questions))
+
+        if len(self.questions) == 0:
+            alert("No questions found")
+            return
 
         # some kind of LEFT JOIN implemention because Anvil doesn't have it in free plan
         self.questions_not_answered_yet = []
@@ -82,6 +89,13 @@ class SessionSettings(SessionSettingsTemplate):
 
         random.shuffle(self.questions_not_answered_yet)
 
+        # print("len(self.questions_not_answered_yet)")
+        # print(len(self.questions_not_answered_yet))
+
+        if len(self.questions_not_answered_yet) == 0:
+            alert("No questions found")
+            return
+
         ModuleGlobal.questions = self.questions_not_answered_yet
 
         open_form("ShowQuestion")
@@ -103,4 +117,7 @@ class SessionSettings(SessionSettingsTemplate):
     def button_revision_click(self, **event_args):
         """This method is called when the button is clicked"""
         ModuleGlobal.session_revision = True
+
+        anvil.server.call("get_question_revision")
+
         open_form("ShowQuestion")

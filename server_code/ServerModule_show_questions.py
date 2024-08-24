@@ -6,10 +6,15 @@ from anvil.tables import app_tables
 import anvil.server
 
 import pandas as pd
+from datetime import datetime
+import pytz
 
 
 @anvil.server.callable
-def get_question_revision(self):
+def get_question_revision():
+    print("get_question_revision")
+
+    print("Getting answers")
     answers = app_tables.answers.search()
 
     answers_list = [
@@ -22,13 +27,14 @@ def get_question_revision(self):
             "question_level": r["question"]["level"],
             "got_it_right": r["got_it_right"],
             "session": r["session"],
-            "user": r["user"]["email"],
+            "user": r["user"]["email"] if r["user"] else "",
         }
         for r in answers
     ]
 
     df = pd.DataFrame.from_dict(answers_list)
 
+    print("Counting wrongs")
     df_wrong = (
         df.groupby(["question"])["got_it_right"].value_counts().unstack(fill_value=0)
     )
@@ -47,12 +53,11 @@ def get_question_revision(self):
     df_wrong["wrong_normalized"] = df_wrong["Wrong"] / df_wrong["Wrong"].sum()
     df_wrong = df_wrong.set_index("question")
 
-    # from datetime import datetime
-    # import pytz
+    print("Calculationg time diff")
 
     # Assuming 'created_at' is in UTC, convert datetime.now() to UTC
-    # now_aware = datetime.now(pytz.UTC)
-    now_aware = datetime.now()
+    now_aware = datetime.now(pytz.UTC)
+    # now_aware = datetime.now()
 
     df_created = df.groupby(["question"])["created_at"].max().reset_index()
     df_created = df_created.set_index("question")
@@ -67,6 +72,8 @@ def get_question_revision(self):
     )
 
     df_answer_stats = df_wrong.join(df_created)
+
+    print("Calculating scrores")
 
     def score(row):
         weights = {"wrong_normalized": 1, "time_diff_from_now_normalized": 1}
@@ -86,4 +93,4 @@ def get_question_revision(self):
     df_data = df[["question_data", "question"]]
     df_data = df_data.set_index("question")
 
-    df_score_ = df_score.join(df_data)
+    return df_data["question_data"].to_list()
