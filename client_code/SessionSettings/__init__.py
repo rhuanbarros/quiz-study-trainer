@@ -35,6 +35,8 @@ class SessionSettings(SessionSettingsTemplate):
 
     def button_start_click(self, **event_args):
         """This method is called when the button is clicked"""
+        ModuleGlobal.session_revision = False
+
         ModuleGlobal.subject_matter_selected = (
             self.drop_down_subject_matter.selected_value
         )
@@ -53,3 +55,8 @@ class SessionSettings(SessionSettingsTemplate):
             app_tables.question_titles.add_row(title=row)
 
         self.get_titles()
+
+    def button_revision_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        ModuleGlobal.session_revision = True
+        open_form("ShowQuestion")

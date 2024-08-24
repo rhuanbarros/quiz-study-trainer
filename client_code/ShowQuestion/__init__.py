@@ -27,10 +27,19 @@ class ShowQuestion(ShowQuestionTemplate):
 
     def form_show(self, **event_args):
         """This method is called when the form is shown on the page"""
-        self.get_question()
         # self.card_explanation_elaborate_more.visible = False
+        self.get_question()
 
     def get_question(self):
+        if ModuleGlobal.session_revision:
+            self.get_question_revision()
+        else:
+            self.get_question_custom_training()
+
+    def get_question_revision(self):
+        pass
+
+    def get_question_custom_training(self):
         self.column_panel_btnsanswer.visible = True
         self.linear_panel_explanation.visible = False
         self.card_explanation_elaborate_more.visible = False
