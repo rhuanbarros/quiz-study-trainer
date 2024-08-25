@@ -34,3 +34,7 @@ class SessionOver(SessionOverTemplate):
         self.label_correct.text = f"Correct answers: {str(self.total_right)} - {self.total_right_percent:.2f}%"
         self.label_incorrect.text = f"Incorrect  answers: {str(self.total_wrong)} - {self.total_wrong_percent:.2f}%"
         self.label_total.text = f"Total of questions answered: {len(self.answers)}"
+
+    def button_start_again_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        open_form("SessionSettings")

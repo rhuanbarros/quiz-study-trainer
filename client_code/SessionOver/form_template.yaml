@@ -28,3 +28,4 @@ components_by_slot:
     properties: {text: Start again, role: primary-color, spacing_above: large}
     type: Button
     layout_properties: {}
+    event_bindings: {click: button_start_again_click}

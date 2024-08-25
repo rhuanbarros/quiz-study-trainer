@@ -14,14 +14,13 @@ import pytz
 def get_question_revision():
     print("get_question_revision")
 
-    print("Getting answers")
     answers = app_tables.answers.search()
 
     answers_list = [
         {
             "created_at": r["created_at"],
             "question_data": r["question"],
-            "question": r["question"]["question"],
+            "question_txt": r["question"]["question"],
             "question_title": r["question"]["title"],
             "question_type": r["question"]["type"],
             "question_level": r["question"]["level"],
@@ -32,65 +31,58 @@ def get_question_revision():
         for r in answers
     ]
 
-    df = pd.DataFrame.from_dict(answers_list)
+    aq = {}
+    total_wrong = 0
+    total_right = 0
 
-    print("Counting wrongs")
-    df_wrong = (
-        df.groupby(["question"])["got_it_right"].value_counts().unstack(fill_value=0)
-    )
-    df_wrong = df_wrong.rename(columns={False: "Wrong", True: "Right"})
-    df_wrong = (
-        df_wrong.reset_index()
-    )  # Reset index to move 'question_question' into a column
-    df_wrong = df_wrong.sort_values(by="Wrong", ascending=False)
-    df_wrong = df_wrong[["question", "Wrong", "Right"]]  # Select the desired columns
-    df_wrong = df_wrong.reset_index(drop=True)
-    df_wrong.columns.name = None
+    for ans in answers_list:
+        key = ans["question_txt"]
+        got_it_right = ans["got_it_right"]
 
-    df_wrong["Wrong_percent"] = df_wrong["Wrong"] / (
-        df_wrong["Wrong"] + df_wrong["Right"]
-    )
-    df_wrong["wrong_normalized"] = df_wrong["Wrong"] / df_wrong["Wrong"].sum()
-    df_wrong = df_wrong.set_index("question")
+        if key not in aq:
+            aq[key] = {
+                "question_data": ans["question_data"],
+                "last_answered": ans["created_at"],
+                "wrong": 0,
+                "right": 1,
+            }
 
-    print("Calculationg time diff")
+        aq[key]["last_answered"] = max(ans["created_at"], aq[key]["last_answered"])
 
-    # Assuming 'created_at' is in UTC, convert datetime.now() to UTC
+        if got_it_right:
+            aq[key]["right"] += 1
+            total_wrong += 1
+        else:
+            aq[key]["wrong"] += 1
+            total_right += 1
+
     now_aware = datetime.now(pytz.UTC)
-    # now_aware = datetime.now()
+    total_time = 0
+    for key in aq:
+        aq[key]["wrong_normalized"] = aq[key]["wrong"] / total_wrong
+        aq[key]["right_normalized"] = aq[key]["right"] / total_right
+        aq[key]["time_diff"] = int(
+            (now_aware - aq[key]["last_answered"]).total_seconds()
+        )
+        total_time += aq[key]["time_diff"]
 
-    df_created = df.groupby(["question"])["created_at"].max().reset_index()
-    df_created = df_created.set_index("question")
-    df_created["time_diff_from_now"] = now_aware - df_created["created_at"]
-    # df_created["time_diff_from_now"] = df_created["time_diff_from_now"].apply( lambda x: int( x.total_seconds() / 60 ) )
-    df_created["time_diff_from_now"] = df_created["time_diff_from_now"].apply(
-        lambda x: int(x.total_seconds())
-    )
-    df_created = df_created.drop(columns="created_at")
-    df_created["time_diff_from_now_normalized"] = (
-        df_created["time_diff_from_now"] / df_created["time_diff_from_now"].sum()
-    )
-
-    df_answer_stats = df_wrong.join(df_created)
-
-    print("Calculating scrores")
+    for key in aq:
+        aq[key]["time_diff"] = aq[key]["time_diff"] / total_time
 
     def score(row):
-        weights = {"wrong_normalized": 1, "time_diff_from_now_normalized": 1}
+        weights = {"wrong_normalized": 1, "time_diff": 1}
 
         return (
             row["wrong_normalized"] * weights["wrong_normalized"]
-            + row["time_diff_from_now_normalized"]
-            * weights["time_diff_from_now_normalized"]
+            + row["time_diff"] * weights["time_diff"]
         )
 
-    df_score = (
-        df_answer_stats.apply(score, axis=1).sort_values(ascending=False).reset_index()
-    )
-    df_score = df_score.set_index("question")
-    df_score.columns = ["score"]
+    for key in aq:
+        aq[key]["score"] = score(aq[key])
 
-    df_data = df[["question_data", "question"]]
-    df_data = df_data.set_index("question")
+    aq_list = [(v["question_data"], v["score"]) for k, v in aq.items()]
 
-    return df_data["question_data"].to_list()
+    questions_ranking = sorted(aq_list, key=lambda row: row[1], reverse=False)
+    questions_ranking_ = [e[0] for e in questions_ranking]
+
+    return questions_ranking_

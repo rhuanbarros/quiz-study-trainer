@@ -11,6 +11,8 @@ from .. import ModuleGlobal
 import uuid
 import random
 
+from datetime import datetime
+
 
 class SessionSettings(SessionSettingsTemplate):
     def __init__(self, **properties):
@@ -118,6 +120,6 @@ class SessionSettings(SessionSettingsTemplate):
         """This method is called when the button is clicked"""
         ModuleGlobal.session_revision = True
 
-        anvil.server.call("get_question_revision")
+        ModuleGlobal.questions = anvil.server.call("get_question_revision")
 
         open_form("ShowQuestion")
