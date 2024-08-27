@@ -46,7 +46,7 @@ class ShowQuestion(ShowQuestionTemplate):
         else:
             self.question = ModuleGlobal.questions.pop()
 
-            self.label_question.text = self.question["question"]
+            self.rich_text_question.content = self.question["question"]
             self.label_subject_matter.text = (
                 "Subject matter title: " + self.question["title"]
             )
