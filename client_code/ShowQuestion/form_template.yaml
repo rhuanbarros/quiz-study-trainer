@@ -1,102 +1,102 @@
-layout:
-  type: form:LayoutPage
-  form_event_bindings: {show: form_show}
-is_package: true
 components_by_slot:
   main_slot:
-  - name: headline_1
+  - layout_properties: {}
+    name: headline_1
     properties: {role: headline, text: Question}
     type: Label
-    layout_properties: {}
-  - name: card_1
-    properties: {role: card}
-    type: ColumnPanel
-    layout_properties: {}
-    components:
-    - name: rich_text_question
+  - components:
+    - layout_properties: {grid_position: 'XJRTLP,DFDRMM'}
+      name: rich_text_question
       properties: {}
       type: RichText
-      layout_properties: {grid_position: 'XJRTLP,DFDRMM'}
-    - name: label_subject_matter
+    - layout_properties: {grid_position: 'RLBVTX,VYWNEZ'}
+      name: label_subject_matter
       properties: {text: 'Subject matter title:'}
       type: Label
-      layout_properties: {grid_position: 'RLBVTX,VYWNEZ'}
-    - name: label_level
+    - layout_properties: {grid_position: 'THHMNJ,UEYOBD'}
+      name: label_level
       properties: {text: 'Level: '}
       type: Label
-      layout_properties: {grid_position: 'THHMNJ,UEYOBD'}
-  - name: column_panel_btnsanswer
+    layout_properties: {}
+    name: card_1
+    properties: {role: card}
+    type: ColumnPanel
+  - components:
+    - event_bindings: {click: button_false_click}
+      layout_properties: {grid_position: 'UITIKF,BNSNKE'}
+      name: button_false
+      properties: {role: raised, text: 'False'}
+      type: Button
+    - event_bindings: {click: button_true_click}
+      layout_properties: {grid_position: 'UITIKF,CIDLXN'}
+      name: button_true
+      properties: {role: raised, text: 'true'}
+      type: Button
+    - event_bindings: {click: button_idontknow_click}
+      layout_properties: {grid_position: 'UITIKF,NMZDNR'}
+      name: button_idontknow
+      properties: {role: raised, text: I dont know}
+      type: Button
+    layout_properties: {}
+    name: column_panel_btnsanswer
     properties: {}
     type: ColumnPanel
-    layout_properties: {}
-    components:
-    - name: button_false
-      properties: {text: 'False', role: raised}
-      type: Button
-      layout_properties: {grid_position: 'UITIKF,BNSNKE'}
-      event_bindings: {click: button_false_click}
-    - name: button_true
-      properties: {text: 'true', role: raised}
-      type: Button
-      layout_properties: {grid_position: 'UITIKF,CIDLXN'}
-      event_bindings: {click: button_true_click}
-    - name: button_idontknow
-      properties: {text: I dont know, role: raised}
-      type: Button
-      layout_properties: {grid_position: 'UITIKF,NMZDNR'}
-      event_bindings: {click: button_idontknow_click}
-  - name: linear_panel_explanation
-    properties: {spacing_above: large}
-    type: LinearPanel
-    layout_properties: {}
-    components:
-    - name: card_2
-      properties: {role: card, spacing_below: large}
-      type: ColumnPanel
-      components:
-      - name: headline_right
-        properties: {role: subheading, text: You got it right!, foreground: '#00cc33', icon: 'fa:check', bold: true}
+  - components:
+    - components:
+      - layout_properties: {grid_position: 'FOKXDW,WAPWOG'}
+        name: headline_right
+        properties: {bold: true, foreground: '#00cc33', icon: 'fa:check', role: subheading, text: You got it right!}
         type: Label
-        layout_properties: {grid_position: 'FOKXDW,WAPWOG'}
-      - name: headline_wrong
-        properties: {role: subheading, text: You got it wrong!, foreground: '#db0000', icon: 'fa:close', bold: true}
+      - layout_properties: {grid_position: 'RKWYEK,SFLNBF'}
+        name: headline_wrong
+        properties: {bold: true, foreground: '#db0000', icon: 'fa:close', role: subheading, text: You got it wrong!}
         type: Label
-        layout_properties: {grid_position: 'RKWYEK,SFLNBF'}
-      - name: headline_2
+      - layout_properties: {grid_position: 'JXHFBZ,TATAEQ'}
+        name: headline_2
         properties: {role: subheading, text: Explanation}
         type: Label
-        layout_properties: {grid_position: 'JXHFBZ,TATAEQ'}
-      - name: label_explanation
+      - layout_properties: {grid_position: 'JPRPEI,MSSDWF'}
+        name: label_explanation
         properties: {}
         type: Label
-        layout_properties: {grid_position: 'JPRPEI,MSSDWF'}
       layout_properties: {}
-    - name: column_panel_2
+      name: card_2
+      properties: {role: card, spacing_below: large}
+      type: ColumnPanel
+    - components:
+      - event_bindings: {click: button_endsession_click}
+        layout_properties: {grid_position: 'FGBONQ,YCBWVE'}
+        name: button_endsession
+        properties: {role: raised, text: End session}
+        type: Button
+      - event_bindings: {click: button_elaboratemore_click}
+        layout_properties: {grid_position: 'FGBONQ,PPIIOG'}
+        name: button_elaboratemore
+        properties: {role: raised, text: Elaborate more the explanation}
+        type: Button
+      - event_bindings: {click: button_next_click}
+        layout_properties: {grid_position: 'FGBONQ,SEPJIM'}
+        name: button_next
+        properties: {role: primary-color, text: next}
+        type: Button
+      layout_properties: {}
+      name: column_panel_2
       properties: {spacing_above: large}
       type: ColumnPanel
-      components:
-      - name: button_endsession
-        properties: {text: End session, role: raised}
-        type: Button
-        layout_properties: {grid_position: 'FGBONQ,YCBWVE'}
-        event_bindings: {click: button_endsession_click}
-      - name: button_elaboratemore
-        properties: {text: Elaborate more the explanation, role: raised}
-        type: Button
-        layout_properties: {grid_position: 'FGBONQ,PPIIOG'}
-        event_bindings: {click: button_elaboratemore_click}
-      - name: button_next
-        properties: {text: next, role: primary-color}
-        type: Button
-        layout_properties: {grid_position: 'FGBONQ,SEPJIM'}
-        event_bindings: {click: button_next_click}
-      layout_properties: {}
-    - name: card_explanation_elaborate_more
-      properties: {role: card, visible: true, spacing_above: large}
-      type: ColumnPanel
-      layout_properties: {}
-      components:
-      - name: label_explanation_elaborate_more
+    - components:
+      - layout_properties: {grid_position: 'HBERKV,MOVCMM'}
+        name: label_explanation_elaborate_more
         properties: {}
         type: Label
-        layout_properties: {grid_position: 'HBERKV,MOVCMM'}
+      layout_properties: {}
+      name: card_explanation_elaborate_more
+      properties: {role: card, spacing_above: large, visible: true}
+      type: ColumnPanel
+    layout_properties: {}
+    name: linear_panel_explanation
+    properties: {spacing_above: large}
+    type: LinearPanel
+is_package: true
+layout:
+  form_event_bindings: {show: form_show}
+  type: form:LayoutPage

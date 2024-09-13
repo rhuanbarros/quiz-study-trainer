@@ -1,31 +1,31 @@
-layout:
-  type: form:LayoutPage
-  form_event_bindings: {show: form_show}
-is_package: true
 components_by_slot:
   main_slot:
-  - name: headline_1
+  - layout_properties: {}
+    name: headline_1
     properties: {role: headline, text: Session over}
     type: Label
-    layout_properties: {}
-  - name: headline_2
+  - layout_properties: {}
+    name: headline_2
     properties: {role: subheading, text: Results}
     type: Label
-    layout_properties: {}
-  - name: label_correct
+  - layout_properties: {}
+    name: label_correct
     properties: {text: 'Correct answers:'}
     type: Label
-    layout_properties: {}
-  - name: label_incorrect
+  - layout_properties: {}
+    name: label_incorrect
     properties: {text: 'Incorrect answers:'}
     type: Label
-    layout_properties: {}
-  - name: label_total
+  - layout_properties: {}
+    name: label_total
     properties: {text: 'Total of questions answered: '}
     type: Label
+  - event_bindings: {click: button_start_again_click}
     layout_properties: {}
-  - name: button_start_again
-    properties: {text: Start again, role: primary-color, spacing_above: large}
+    name: button_start_again
+    properties: {role: primary-color, spacing_above: large, text: Start again}
     type: Button
-    layout_properties: {}
-    event_bindings: {click: button_start_again_click}
+is_package: true
+layout:
+  form_event_bindings: {show: form_show}
+  type: form:LayoutPage

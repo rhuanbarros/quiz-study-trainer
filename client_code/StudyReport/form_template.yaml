@@ -1,36 +1,36 @@
-layout:
-  type: form:LayoutPage
-  form_event_bindings: {show: form_show}
-is_package: true
 components_by_slot:
   main_slot:
-  - name: headline_1
+  - layout_properties: {}
+    name: headline_1
     properties: {role: headline, text: Study report}
     type: Label
-    layout_properties: {}
-  - name: card_1
-    properties: {role: card, spacing_below: large}
-    type: ColumnPanel
-    layout_properties: {}
-    components:
-    - name: headline_2
+  - components:
+    - layout_properties: {grid_position: 'WBYGHB,EVBSMG'}
+      name: headline_2
       properties: {role: headline, text: Questions wrong by topic}
       type: Label
-      layout_properties: {grid_position: 'WBYGHB,EVBSMG'}
-    - name: rich_text_by_topic
+    - layout_properties: {grid_position: 'GBZGJP,AFHERS'}
+      name: rich_text_by_topic
       properties: {}
       type: RichText
-      layout_properties: {grid_position: 'GBZGJP,AFHERS'}
-  - name: card_2
-    properties: {role: card}
-    type: ColumnPanel
     layout_properties: {}
-    components:
-    - name: headline_3
+    name: card_1
+    properties: {role: card, spacing_below: large}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'BUZAYC,GVZIFH'}
+      name: headline_3
       properties: {role: headline, text: Answers wrong by each question}
       type: Label
-      layout_properties: {grid_position: 'BUZAYC,GVZIFH'}
-    - name: rich_text_by_question
+    - layout_properties: {grid_position: 'QLRIVE,AXYFMK'}
+      name: rich_text_by_question
       properties: {}
       type: RichText
-      layout_properties: {grid_position: 'QLRIVE,AXYFMK'}
+    layout_properties: {}
+    name: card_2
+    properties: {role: card}
+    type: ColumnPanel
+is_package: true
+layout:
+  form_event_bindings: {show: form_show}
+  type: form:LayoutPage

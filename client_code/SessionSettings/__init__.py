@@ -49,11 +49,22 @@ class SessionSettings(SessionSettingsTemplate):
         # )
 
         if self.drop_down_subject_matter.selected_value == "All":
-            self.questions = app_tables.questions.search()
+            if self.drop_down_level.selected_value == "All":
+                self.questions = app_tables.questions.search()
+            else:
+                self.questions = app_tables.questions.search(
+                    level=self.drop_down_level.selected_value
+                )
         else:
-            self.questions = app_tables.questions.search(
-                title=self.drop_down_subject_matter.selected_value
-            )
+            if self.drop_down_level.selected_value == "All":
+                self.questions = app_tables.questions.search(
+                    title=self.drop_down_subject_matter.selected_value
+                )
+            else:
+                self.questions = app_tables.questions.search(
+                    title=self.drop_down_subject_matter.selected_value,
+                    level=self.drop_down_level.selected_value,
+                )
         # self.ansers = app_tables.answers.search(question=q.all_of(self.questions))
         self.answers = app_tables.answers.search()
 

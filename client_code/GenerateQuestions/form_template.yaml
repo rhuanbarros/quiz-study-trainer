@@ -1,21 +1,18 @@
-layout:
-  type: form:LayoutPage
-  form_event_bindings: {show: form_show}
-is_package: true
 components_by_slot:
   main_slot:
-  - name: headline_1
+  - layout_properties: {}
+    name: headline_1
     properties: {role: headline, text: Generate questions}
     type: Label
-    layout_properties: {}
-  - name: label_5
+  - layout_properties: {}
+    name: label_5
     properties: {text: List of topics}
     type: Label
-    layout_properties: {}
-  - name: text_area_list_topics
+  - layout_properties: {}
+    name: text_area_list_topics
     properties:
-      placeholder: List of topics to generate questions from
       height: 155.79998779296875
+      placeholder: List of topics to generate questions from
       text: |-
         Language Models and Probability
         Entropy
@@ -23,49 +20,52 @@ components_by_slot:
         Cross-Entropy Loss
         Perplexity
     type: TextArea
-    layout_properties: {}
-  - name: label_2
+  - layout_properties: {}
+    name: label_2
     properties: {text: Additional task description}
     type: Label
-    layout_properties: {}
-  - name: text_area_additional_task_description
-    properties: {text: 'Create questions only about the definitions of the concepts, like mixing the definition of one with another, or mixing the use of one with the use of another. I need this to memorize this concepts.', height: 90.20001220703125}
+  - layout_properties: {}
+    name: text_area_additional_task_description
+    properties: {height: 90.20001220703125, text: 'Create questions only about the definitions of the concepts, like mixing the definition of one with another, or mixing the use of one with the use of another. I need this to memorize this concepts.'}
     type: TextArea
-    layout_properties: {}
-  - name: label_4
+  - layout_properties: {}
+    name: label_4
     properties: {text: Title subject matter}
     type: Label
-    layout_properties: {}
-  - name: text_box_title
+  - layout_properties: {}
+    name: text_box_title
     properties: {placeholder: Title, text: Probability - LLMs}
     type: TextBox
-    layout_properties: {}
-  - name: label_3
+  - layout_properties: {}
+    name: label_3
     properties: {text: Quantity of questions}
     type: Label
-    layout_properties: {}
-  - name: text_box_quantity
+  - layout_properties: {}
+    name: text_box_quantity
     properties: {placeholder: Quantity of questions to generate, text: '1'}
     type: TextBox
-    layout_properties: {}
-  - name: label_1
+  - layout_properties: {}
+    name: label_1
     properties: {text: Level of the questions}
     type: Label
-    layout_properties: {}
-  - name: check_box_easy
-    properties: {text: Easy, checked: true}
+  - layout_properties: {}
+    name: check_box_easy
+    properties: {checked: true, text: Easy}
     type: CheckBox
-    layout_properties: {}
-  - name: check_box_medium
-    properties: {text: Medium, checked: false}
+  - layout_properties: {}
+    name: check_box_medium
+    properties: {checked: false, text: Medium}
     type: CheckBox
-    layout_properties: {}
-  - name: check_box_hard
-    properties: {text: Hard, checked: false}
+  - layout_properties: {}
+    name: check_box_hard
+    properties: {checked: false, text: Hard}
     type: CheckBox
+  - event_bindings: {click: button_generate_click}
     layout_properties: {}
-  - name: button_generate
-    properties: {text: Generate, role: primary-color}
+    name: button_generate
+    properties: {role: primary-color, text: Generate}
     type: Button
-    layout_properties: {}
-    event_bindings: {click: button_generate_click}
+is_package: true
+layout:
+  form_event_bindings: {show: form_show}
+  type: form:LayoutPage

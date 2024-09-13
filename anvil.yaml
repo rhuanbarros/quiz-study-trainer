@@ -1,127 +1,127 @@
 allow_embedding: false
-package_name: quiz_trainer
-name: quiz_trainer
-startup_form: null
-runtime_options:
-  version: 3
-  client_version: '3'
-  server_version: python3-sandbox
-  server_spec: {base: python310-standard}
-  legacy_features: {class_names: true, bootstrap3: true, __dict__: true, root_container: true}
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/secrets.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: true, enable_automatically: true, use_email: true, confirm_email: false}
-  server_config: {user_table: users}
-metadata: {title: Quiz study trainer, description: 'Its poupose is to work like flashcards, but it trick questions created automaticaly. '}
-startup: {type: form, module: SessionSettings}
-native_deps: null
 db_schema:
-  questions:
-    client: full
-    server: full
-    columns:
-    - name: title
-      admin_ui: {width: 200, order: 0}
-      type: string
-    - name: topic_description
-      admin_ui: {width: 200, order: 2}
-      type: string
-    - name: level
-      admin_ui: {width: 200, order: 3}
-      type: string
-    - name: question
-      admin_ui: {order: 3.25, width: 200}
-      type: string
-    - name: answer_correct
-      admin_ui: {order: 3.5, width: 200}
-      type: string
-    - name: type
-      admin_ui: {width: 200, order: 3.375}
-      type: string
-    - name: answers
-      admin_ui: {width: 200, order: 4.5}
-      type: simpleObject
-    - name: explanation
-      admin_ui: {width: 200, order: 5.5}
-      type: string
-    - name: created_at
-      admin_ui: {order: -1, width: 200}
-      type: datetime
-    - name: user
-      admin_ui: {width: 200, order: 6.5}
-      type: link_single
-      target: users
-    title: questions
   answers:
     client: full
-    server: full
     columns:
-    - name: created_at
-      admin_ui: {width: 200, order: 0}
+    - admin_ui: {order: 0, width: 200}
+      name: created_at
       type: datetime
-    - name: question
-      admin_ui: {width: 200, order: 1}
-      type: link_single
+    - admin_ui: {order: 1, width: 200}
+      name: question
       target: questions
-    - name: got_it_right
-      admin_ui: {order: 2, width: 200}
-      type: bool
-    - name: session
-      admin_ui: {width: 200, order: 3}
-      type: string
-    - name: user
-      admin_ui: {width: 200, order: 4}
       type: link_single
+    - admin_ui: {order: 2, width: 200}
+      name: got_it_right
+      type: bool
+    - admin_ui: {order: 3, width: 200}
+      name: session
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: user
       target: users
-    title: answers
-  users:
-    client: search
+      type: link_single
     server: full
-    columns:
-    - name: email
-      admin_ui: {order: 0, width: 200}
-      type: string
-    - name: enabled
-      admin_ui: {order: 1, width: 200}
-      type: bool
-    - name: last_login
-      admin_ui: {order: 2, width: 200}
-      type: datetime
-    - name: password_hash
-      admin_ui: {order: 3, width: 200}
-      type: string
-    - name: n_password_failures
-      admin_ui: {order: 4, width: 200}
-      type: number
-    - name: confirmed_email
-      admin_ui: {order: 5, width: 200}
-      type: bool
-    - name: signed_up
-      admin_ui: {order: 6, width: 200}
-      type: datetime
-    title: Users
+    title: answers
   question_titles:
     client: full
-    server: full
     columns:
-    - name: title
-      admin_ui: {width: 200, order: 0}
+    - admin_ui: {order: 0, width: 200}
+      name: title
       type: string
+    server: full
     title: question_titles
+  questions:
+    client: full
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: title
+      type: string
+    - admin_ui: {order: 2, width: 200}
+      name: topic_description
+      type: string
+    - admin_ui: {order: 3, width: 200}
+      name: level
+      type: string
+    - admin_ui: {order: 3.25, width: 200}
+      name: question
+      type: string
+    - admin_ui: {order: 3.5, width: 200}
+      name: answer_correct
+      type: string
+    - admin_ui: {order: 3.375, width: 200}
+      name: type
+      type: string
+    - admin_ui: {order: 4.5, width: 200}
+      name: answers
+      type: simpleObject
+    - admin_ui: {order: 5.5, width: 200}
+      name: explanation
+      type: string
+    - admin_ui: {order: -1, width: 200}
+      name: created_at
+      type: datetime
+    - admin_ui: {order: 6.5, width: 200}
+      name: user
+      target: users
+      type: link_single
+    server: full
+    title: questions
+  users:
+    client: search
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: email
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: enabled
+      type: bool
+    - admin_ui: {order: 2, width: 200}
+      name: last_login
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      name: password_hash
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: n_password_failures
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: confirmed_email
+      type: bool
+    - admin_ui: {order: 6, width: 200}
+      name: signed_up
+      type: datetime
+    server: full
+    title: Users
+metadata: {description: 'Its poupose is to work like flashcards, but it trick questions created automaticaly. ', title: Quiz study trainer}
+name: quiz_trainer
+native_deps: null
+package_name: quiz_trainer
+runtime_options:
+  client_version: '3'
+  legacy_features: {__dict__: true, bootstrap3: true, class_names: true, root_container: true}
+  server_spec: {base: python310-standard}
+  server_version: python3-sandbox
+  version: 3
 secrets:
   GOOGLE_API_KEY:
+    type: secret
     value: {55C7JZ62MGB2UXA6: 3bG1eECWjXb1/XM0SqljonQNbdOreZb8rlSv0VHYqaWBTpbnmbwaaMWD+X1B+bQ2Cl5AqrEMMV75iFxMMkjh6a8SLycCwOJRs8FHOsS4ODR/2mc7Qg2KNxYC2FQ67PAAnC81OWkoKqt0Mjmrj88wM9kF1bKayL7QOpqvJu6G0JM0/8r3yDk=}
-    type: secret
-  OPENAI_API_KEY:
-    value: {55C7JZ62MGB2UXA6: rvPzo5DukGyx18jJwP53SqB3/kS55OFaOGGGoI0vro/5kuDOCxXVJDlV1mnKMXl96r3ehH9xL33MQCC77GxXmsI/sD5uyuc3Dh5EiwPKIYRa+xw/oNb/unZlx7buJCFmf6epIkeqaDo+2E65m2pRtDf74DVoLdO1jGBt6OuKIKqi2nD2stp50iN1xn+WVmOYKJ79jolB4fuwvGpWdX/3vI6rkxLz++xdGs0M1endO8g4EP2O7hPOClzby0ND85HvU+kAGO5aYMOmPXRIMMDI3X8AL14oxmbCQSSdBEPaj9Ux5/i1sqeKnn7ZzHkHTidwv38CS/NJCtE=}
-    type: secret
   GROQ_API_KEY:
-    value: {55C7JZ62MGB2UXA6: DODS4uTOYX1qWqW4TzW/OsFMhfGdens6pssffoFexYA19jHjYyxJ7l7yhnViQ+xLF7q8KiPYxcG1UmWSZLEFT+YvscTqdqTdOdTF3U+Bjs2cMDtUuXF+xrtVKEM3ugY8+6D5n18W3CO8iFTR7NxDAX6lnA1PrGc18AUgidu2JVi/ASeMGdqbDb2InYwGpVBoLIXkI+J5MA==}
     type: secret
+    value: {55C7JZ62MGB2UXA6: DODS4uTOYX1qWqW4TzW/OsFMhfGdens6pssffoFexYA19jHjYyxJ7l7yhnViQ+xLF7q8KiPYxcG1UmWSZLEFT+YvscTqdqTdOdTF3U+Bjs2cMDtUuXF+xrtVKEM3ugY8+6D5n18W3CO8iFTR7NxDAX6lnA1PrGc18AUgidu2JVi/ASeMGdqbDb2InYwGpVBoLIXkI+J5MA==}
+  OPENAI_API_KEY:
+    type: secret
+    value: {55C7JZ62MGB2UXA6: rvPzo5DukGyx18jJwP53SqB3/kS55OFaOGGGoI0vro/5kuDOCxXVJDlV1mnKMXl96r3ehH9xL33MQCC77GxXmsI/sD5uyuc3Dh5EiwPKIYRa+xw/oNb/unZlx7buJCFmf6epIkeqaDo+2E65m2pRtDf74DVoLdO1jGBt6OuKIKqi2nD2stp50iN1xn+WVmOYKJ79jolB4fuwvGpWdX/3vI6rkxLz++xdGs0M1endO8g4EP2O7hPOClzby0ND85HvU+kAGO5aYMOmPXRIMMDI3X8AL14oxmbCQSSdBEPaj9Ux5/i1sqeKnn7ZzHkHTidwv38CS/NJCtE=}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/secrets.yml
+- client_config: {allow_signup: true, confirm_email: false, enable_automatically: true, use_email: true}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+startup: {module: SessionSettings, type: form}
+startup_form: null
 uplink_visible: true

@@ -1,53 +1,59 @@
-layout:
-  type: form:LayoutPage
-  form_event_bindings: {show: form_show}
-is_package: true
 components_by_slot:
   main_slot:
-  - name: headline_1
+  - layout_properties: {}
+    name: headline_1
     properties: {role: headline, text: Session settings}
     type: Label
-    layout_properties: {}
-  - name: card_1
-    properties: {role: card, spacing_below: large}
-    type: ColumnPanel
-    layout_properties: {}
-    components:
-    - name: headline_2
-      properties: {role: subheading, text: Custom session, font_size: 18}
+  - components:
+    - layout_properties: {grid_position: 'NAHQQS,KNFAFD'}
+      name: headline_2
+      properties: {font_size: 18, role: subheading, text: Custom session}
       type: Label
-      layout_properties: {grid_position: 'NAHQQS,KNFAFD'}
-    - name: button_update
+    - event_bindings: {click: button_update_click}
+      layout_properties: {grid_position: 'NTYMES,MVGFZT'}
+      name: button_update
       properties: {text: update titles}
       type: Button
-      layout_properties: {grid_position: 'NTYMES,MVGFZT'}
-      event_bindings: {click: button_update_click}
-    - name: label_1
+    - layout_properties: {grid_position: 'CJVONU,GUDWPD'}
+      name: label_1
       properties: {text: Select the subject matter}
       type: Label
-      layout_properties: {grid_position: 'CJVONU,GUDWPD'}
-    - name: drop_down_subject_matter
+    - data_bindings:
+      - {code: '', property: tag, writeback: false}
+      layout_properties: {grid_position: 'ZKHRLD,CXNWAR'}
+      name: drop_down_subject_matter
       properties: {}
       type: DropDown
-      layout_properties: {grid_position: 'ZKHRLD,CXNWAR'}
-      data_bindings:
-      - {property: tag, code: '', writeback: false}
-    - name: button_start
-      properties: {text: Start session, role: primary-color}
-      type: Button
+    - data_bindings: []
+      layout_properties: {grid_position: 'LWXAVA,NERQJN'}
+      name: drop_down_level
+      properties:
+        items: [All, beginner, intermediate, hard]
+      type: DropDown
+    - event_bindings: {click: button_start_click}
       layout_properties: {grid_position: 'KJOEFF,XLSZQV'}
-      event_bindings: {click: button_start_click}
-  - name: card_2
-    properties: {role: card, spacing_above: large}
-    type: ColumnPanel
+      name: button_start
+      properties: {role: primary-color, text: Start session}
+      type: Button
     layout_properties: {}
-    components:
-    - name: headline_3
+    name: card_1
+    properties: {role: card, spacing_below: large}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'RGWRDN,QRGWCJ'}
+      name: headline_3
       properties: {role: headline, text: Revision with spaced repetion algorithm}
       type: Label
-      layout_properties: {grid_position: 'RGWRDN,QRGWCJ'}
-    - name: button_revision
-      properties: {text: Start session, role: primary-color}
-      type: Button
+    - event_bindings: {click: button_revision_click}
       layout_properties: {grid_position: 'BYCGVG,OIGRHJ'}
-      event_bindings: {click: button_revision_click}
+      name: button_revision
+      properties: {role: primary-color, text: Start session}
+      type: Button
+    layout_properties: {}
+    name: card_2
+    properties: {role: card, spacing_above: large}
+    type: ColumnPanel
+is_package: true
+layout:
+  form_event_bindings: {show: form_show}
+  type: form:LayoutPage
