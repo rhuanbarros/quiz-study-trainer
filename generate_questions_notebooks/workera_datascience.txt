@@ -1,0 +1,844 @@
+
+
+Question 1 of 11
+
+A data engineer is tasked with gathering raw, unprocessed data for a project analyzing the effects of social media usage on mental health.
+
+Which of the following data sources would be a primary source of data in this scenario?
+
+    a book discussing the correlation between social media usage and mental health
+
+    a blog post summarizing the findings of various research studies on social media and mental health
+
+    a meta-analysis of multiple studies on social media and mental health
+
+    data obtained through a social media platform's API
+    I don't know yet
+
+How would you rate this assessment question?
+Question 1 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+The correct answer is option 4: data obtained through a social media platform's API. This is because primary data sources directly provide raw, firsthand data. In the context of studying the effects of social media on mental health, data obtained directly from a social media platform via its API consists of original, unprocessed information such as user interactions, posts, and behavioral data. This type of data is most suitable for an analysis that aims to explore new insights and conduct an original research study, as it has not been filtered or interpreted through secondary analysis like the other options listed.
+
+
+
+Question 2 of 11
+
+Which of the following statements is TRUE about the use of moving averages in time-series analysis?
+
+    Moving averages can be used to detect changes in the trend of time-series data.
+
+    Moving averages can be used to estimate the trend of time-series data.
+
+    Moving averages can be used to remove trend and seasonality from time-series data.
+
+    Moving averages can be used to model the seasonal component of time-series data.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 2 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+You selected "I don't know yet" or didn't select an option.
+
+Correct answer
+
+Moving averages are primarily used to estimate the trend of time-series data. This means that they help smooth out short-term fluctuations and highlight longer-term patterns or trends, making it easier to see the underlying direction of the data over time. This is why option 2 is correct. Options 1 and 3 are somewhat related but don’t capture the main purpose of moving averages, which is trend estimation, while option 4 is incorrect because moving averages are not typically used to model seasonal components.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 3 of 11
+
+A retail company that wants to analyze the sales of different products. The following table shows the sales data for three products for the first quarter of the year.
+
+
+Month
+	
+
+Product A Sales
+	
+
+Product B Sales
+	
+
+Product C Sales
+
+Jan
+	
+
+1000
+	
+
+800
+	
+
+1200
+
+Feb
+	
+
+900
+	
+
+700
+	
+
+1300
+
+Mar
+	
+
+1100
+	
+
+900
+	
+
+1400
+
+
+Which of the following summary statistics BEST describes the variability of sales for product A?
+
+    Range
+
+    Skewness
+
+    Kurtosis
+
+    Variance
+
+    Mean
+    I don't know yet
+
+How would you rate this assessment question?
+Question 3 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+The correct answer is Variance, which you selected. Variance is a statistical measure that describes the spread or variability of a data set. It calculates the average of the squared differences from the Mean, providing a clear picture of how much the sales values deviate from their average over the period. This is particularly useful in understanding the consistency or fluctuations in sales of product A from month to month. Other options like Range, Skewness, Kurtosis, and Mean, do not specifically address this aspect of variability in the same comprehensive way that Variance does.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 4 of 11
+
+A company launches a social media campaign to increase brand awareness for its new product. Which of the following is the BEST KPI for measuring the success of the campaign?
+
+     cost per click (CPC)
+
+    click-through rate (CTR)
+
+    conversion rate
+
+    engagement rate
+    I don't know yet
+
+How would you rate this assessment question?
+Question 4 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The option you selected, click-through rate (CTR), primarily measures how often people click on the link provided in the campaign relative to the number of times the ad is shown. Although CTR is important for understanding how appealing or effective the ad is at generating clicks, it does not directly measure the level of user interaction or engagement with the content, which is more relevant to brand awareness goals. CTR is more aligned with initial interest rather than deeper engagement metrics.
+
+Correct answer
+
+The correct answer, engagement rate, is the best KPI for measuring the success of a social media campaign aimed at increasing brand awareness. Engagement rate includes metrics such as likes, shares, comments, and other interactions that indicate how actively involved the audience is with the content. This level of interaction is a direct indicator of how much the audience resonates with the message, which is crucial for building brand awareness. By analyzing engagement, the company can better understand how effectively the campaign is capturing and holding the audience's attention.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 5 of 11
+
+A data science team is working on a project to analyze sales data from stores A and B. Both stores have their datasets in CSV format, each containing columns for Product ID, Category, and Sales Amount. The team must merge the two datasets while ensuring that each product's sales amounts are combined across both stores.
+
+Which set operation should they apply to merge the datasets effectively?
+
+    Merge datasets using left join on Product ID and Category.
+
+    Apply a full outer join on Product ID with a condition to aggregate Sales Amount.
+
+    Perform an inner join on Product ID and Category.
+
+    Use a union operation on both datasets.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 5 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+Your selection of using a union operation on both datasets is incorrect. A union operation combines all the records from both datasets and removes duplicates. However, it doesn't combine the 'Sales Amount' for the same 'Product ID', which is the requirement in this case. The options of merging datasets using left join on 'Product ID' and 'Category' or performing an inner join on 'Product ID' and 'Category' would also not meet the requirement. A left join includes all records from the left dataset and matching records from the right dataset, while an inner join only includes records that have matching values in both datasets. Neither operation aggregates the 'Sales Amount' for the same 'Product ID'.
+
+Correct answer
+
+The correct option is to apply a full outer join on 'Product ID' with a condition to aggregate 'Sales Amount'. This operation would include all records from both datasets, and for those records with the same 'Product ID', the 'Sales Amounts' from both stores would be combined. When it comes to merging datasets and combining specific column values, a full outer join with an aggregation condition is the most appropriate set operation. Remember, it's crucial to consider the specific requirements of the data manipulation task to choose the right operation.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 6 of 11
+
+A data analyst is working on a multi-class classification problem for a medical diagnosis system. The dataset is imbalanced, with some classes having significantly fewer samples. The analyst wants to evaluate the model's performance using cross-validation.
+
+Which of the following cross-validation techniques is MOST appropriate for this scenario?
+
+    K-Fold
+
+    Stratified K-Fold
+
+    Leave-One-Out
+
+    Group K-Fold
+    I don't know yet
+
+How would you rate this assessment question?
+Question 6 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+The choice of Stratified K-Fold cross-validation is indeed the most appropriate for your scenario involving an imbalanced multi-class dataset. The advantage of Stratified K-Fold is that it ensures each fold of the dataset contains approximately the same percentage of samples of each class as the complete set. This is particularly important in your case because it helps in maintaining a representative mix of the classes, thereby providing a more accurate measure of the model's performance on unseen data. It prevents the model from being biased towards the majority class and improves the reliability of the evaluation, especially in medical diagnosis systems where the balance of sensitivity among classes can be crucial.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 7 of 11
+
+Which of the following is an example of concept drift in a credit scoring model?
+
+    A new feature related to employment status is added to the model.
+
+    The definition of bad loans changes.
+
+    The distribution of age in the dataset changes over time.
+
+    A new credit bureau is added to the data sources.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 7 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The selection you made, "The distribution of age in the dataset changes over time," refers to a change in the population characteristics rather than a fundamental shift in the underlying concept that the model was initially designed to predict. While changing demographics can affect model performance, concept drift specifically relates to changes in the relationships between input features and the target variable, not just changes in the features themselves.
+
+Correct answer
+
+The correct answer, "The definition of bad loans changes," is an example of concept drift because it indicates a shift in the criteria used to define the outcome variable the model is predicting. When the definition of what constitutes a bad loan changes, the historical data the model was trained on no longer represents the same target concept, leading to potential decreases in model accuracy and effectiveness until the model is retrained or adjusted to reflect this new definition.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 8 of 11
+
+A data scientist is working on a large-scale machine learning project for a major industry. The data scientist have collected a massive dataset with millions of records to train their model. After performing an initial analysis, the data scientist discovers that the dataset contains a considerable number of potential outliers. The primary objective is to improve the model's accuracy by identifying and eliminating these outliers.
+
+Which of the following methods would be MOST appropriate for achieving this goal?
+
+    discarding all data points that have a high correlation with the target variable to reduce the risk of overfitting the model
+
+    utilizing a fixed threshold to classify data points as outliers based on their standard deviation from the mean value
+
+    employing unsupervised machine learning algorithms like DBSCAN or LOF to cluster the data and identify outlier data points
+
+    replacing all potential outliers with the median value of the respective feature, without considering any further analysis
+    I don't know yet
+
+How would you rate this assessment question?
+Question 8 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The approach of using a fixed threshold based on standard deviation from the mean to classify outliers, as mentioned in your selection, can be too rigid for complex datasets. This method assumes that data follows a normal distribution, which might not be the case in many real-world scenarios. It also doesn't account for the possibility that what appears to be outliers could be valid extreme values, significant for the analysis. Hence, this method could lead to incorrect exclusion of important data or failure to detect actual outliers in non-normal distributions.
+
+Correct answer
+
+The correct method involves using unsupervised machine learning algorithms like DBSCAN or LOF to identify outliers. These algorithms are effective because they do not rely on assumptions about the data distribution and can adapt to the data's actual structure. DBSCAN, for example, clusters data points based on density, effectively isolating sparse points as outliers. LOF measures the local deviation of a given data point with respect to its neighbors, which helps in identifying points that substantially deviate from typical data patterns. This flexibility makes them ideal for handling complex and large datasets with potential outliers.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 9 of 11
+
+A data analyst fits a linear regression model to predict sales revenue based on advertising spend, and the p-value for the advertising spend variable is 0.05. Which of the following statements is CORRECT?
+
+    The model has a poor fit.
+
+    The advertising spend variable is a significant predictor of sales revenue.
+
+    The advertising spend variable is not a significant predictor of sales revenue.
+
+    The model has a good fit.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 9 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+The advertising spend variable is considered a significant predictor of sales revenue because the p-value is 0.05. In hypothesis testing, a p-value of 0.05 or less typically indicates that the null hypothesis can be rejected, suggesting that there is a statistically significant relationship between the predictor (advertising spend) and the outcome (sales revenue). This means that changes in advertising spend are likely to be associated with changes in sales revenue, making it an important variable in the model.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 10 of 11
+
+The mean weight of 81 apples at a particular farm is 150 grams with a standard deviation of 10 grams. Considering the z-value for the 95% confidence level is 1.96, what is the confidence interval for the mean weight of apples at the farm?
+
+    [134.12, 165.87]
+
+    [149.01, 150.99]
+
+    [148.75, 151.24]
+
+    [147.82, 152.18]
+    I don't know yet
+
+How would you rate this assessment question?
+Question 10 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+You selected "I don't know yet" or didn't select an option.
+
+Correct answer
+
+To find the confidence interval for the mean weight of apples, we use the formula: mean ± (z-value * (standard deviation / sqrt(sample size))). Here, the mean is 150 grams, the z-value is 1.96, the standard deviation is 10 grams, and the sample size is 81. Plugging in these values gives us 150 ± (1.96 * (10 / sqrt(81))), which simplifies to 150 ± (1.96 * 1.11). This calculation results in the interval 150 ± 2.18, or [147.82, 152.18], which matches option 4. This interval is where we expect the true mean weight of the apples to lie with 95% confidence.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Data Science Processes
+
+Question 11 of 11
+
+A data analyst is examining a large dataset containing information on car accidents in a city over the past 5 years. The dataset contains variables such as accident_id, date, time, location, number_of_vehicles_involved, weather_conditions, and injury_severity. The data analyst wants to understand the relationship between two categorical variables: weather_conditions and injury_severity without using graphical methods.
+
+Which of the following methods should the data analyst use to better understand the relationship?
+
+    Compute the correlation coefficient between weather_conditions and injury_severity.
+
+    Perform a t-test to compare the means of weather_conditions and injury_severity.
+
+    Use a linear regression model to predict injury_severity based on weather_conditions.
+
+     Create a contingency table for weather_conditions and injury_severity.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 11 of 11
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The option to compute the correlation coefficient between weather conditions and injury severity is incorrect because the correlation coefficient is typically used for measuring the strength of a linear relationship between two continuous variables. Here, both weather conditions and injury severity are likely categorical variables (e.g., weather conditions might be labeled as 'rainy', 'sunny', etc., and injury severity as 'low', 'medium', 'high'). The correlation coefficient is not suitable for analyzing relationships between categorical variables.
+
+Correct answer
+
+Creating a contingency table for weather conditions and injury severity is the correct choice because it allows you to examine the frequency distribution of injury severity across different weather conditions. This method is particularly useful for categorical variables, enabling an analysis of how these categories interact or are associated with each other. By observing this table, patterns or trends in injury severity relative to different weather conditions can be identified, which is helpful for understanding their relationship without resorting to graphical methods.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 1 of 10
+
+Consider the following scatter plot of two independent variables x and y: 
+
+
+Which of the following methods is MOST appropriate for finding the correlation between x and y?
+
+    Chi-Squared test
+
+    Fisher correlation coefficient
+
+    Pearson’s correlation analysis
+
+    Spearman’s rank correlation analysis
+    I don't know yet
+
+How would you rate this assessment question?
+Question 1 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+A personalized explanation is not available for this question
+
+Explanation
+The correct answer to the question is Spearman's rank correlation analysis (which you selected).
+
+Here's why:
+
+Pearson's correlation analysis measures the linear relationship between two variables. In the scatter plot shown, the relationship between x and y appears to be non-linear (likely a quadratic or exponential relationship).
+
+Spearman's rank correlation analysis is a non-parametric measure that assesses how well the relationship between two variables can be described by a monotonic function (whether increasing or decreasing). It is more appropriate when the relationship is non-linear, as in this case.
+
+The Chi-Squared test is used for categorical data, and the Fisher correlation coefficient is not typically used for correlation analysis in this context.
+
+
+
+
+
+
+Você disse:
+So, the mais difference between the pearson and spearman that I should know to answer correctly is that the relationship is not linear, so in this case the only option correct would be spearman?
+O ChatGPT disse:
+ChatGPT
+Memória atualizada
+Yes, that's correct! The main difference between Pearson and Spearman correlation is how they handle the relationship between variables:
+
+Pearson's correlation assumes a linear relationship between variables. It measures the strength and direction of a linear association.
+
+Spearman's rank correlation does not assume a linear relationship. It assesses how well the relationship between two variables can be described by a monotonic function (where one variable consistently increases or decreases as the other does, though not necessarily at a constant rate).
+
+In this case, the relationship between x and y in the scatter plot is non-linear but appears monotonic, so Spearman's method is the most appropriate.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 3 of 10
+
+In K-fold cross-validation, which of the following choices for K generally leads to the lowest computational cost?
+
+    K = 2
+
+    K = 10
+    K = int(m/2)
+    K = m (= the number of training examples in your dataset)
+    I don't know yet
+
+How would you rate this assessment question?
+Question 3 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+In K-fold cross-validation, choosing a lower value of K, such as K = 2, generally results in a lower computational cost. This is because the dataset is divided into fewer folds, and each fold is used fewer times as the validation set throughout the cross-validation process. With K = 2, the dataset is split into two parts: one part is used for training and the other for validation. This setup requires fewer training iterations compared to higher values of K, such as K = 10 or K = m, where m is the total number of training examples. Therefore, by choosing K = 2, the process is less computationally intensive as it involves fewer splits and less repetitive training, making it a more efficient choice when computational resources are a concern.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 4 of 10
+
+Which of the following statements about weak and strong learners in a classification algorithm is TRUE?
+
+    Strong learners generalize better to unseen data, whereas weak learners tend to underfit.
+
+    Strong learners usually have lower bias, while weak learners usually have lower variance.
+
+    Strong learners need less data than weak learners.
+
+    Strong learners usually have higher bias while weak learners usually have higher variance.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 4 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+Option 2 is incorrect because strong learners usually have lower bias and higher variance, whereas weak learners tend to have higher bias and lower variance. Bias and variance are crucial concepts in understanding the behavior of different models. Strong learners, with their complexity, can capture the patterns in the data more accurately but may also capture noise, leading to higher variance. Weak learners are simpler and may not capture all the patterns, thus having higher bias but lower variance.
+
+Correct answer
+
+Option 1 is correct because strong learners do generalize better to unseen data, whereas weak learners tend to underfit. Strong learners are typically more complex models that can capture intricate patterns in data, allowing them to perform well on both training and unseen data. In contrast, weak learners are simpler models that may not capture all the patterns in the data, resulting in underfitting and poor generalization to new data.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 5 of 10
+
+A predictive customer churn model was trained primarily using data from users acquired through a specific online marketing campaign, which does not represent the entire customer base.
+
+Which of the following data sampling methods should be used to solve this issue?
+
+    Implement systematic sampling at regular intervals from the customer database.
+
+    Apply stratified sampling to represent customer segments from all acquisition channels proportionally.
+
+    Add a small randomized sample of users from various acquisition channels to the training set.
+
+    Increase the overall sample size by including more users from the same online marketing campaign.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 5 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+The correct answer is using stratified sampling, as it ensures that different segments of the customer base are represented proportionally in the training set. This method is particularly useful when the initial data is biased towards a specific group—in this case, users from a particular online marketing campaign. By applying stratified sampling, you can include customers from various acquisition channels, thus creating a model that better generalizes across the entire customer base. This approach helps in avoiding skewed predictions that favor the initially overrepresented group.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 6 of 10
+
+The product development team is launching new facial recognition software. As an ML engineer, identify potential sources of bias in the training data related to ethnic facial features and describe how you would address these biases to ensure the model's fairness.
+
+    Your Answer
+    A big source of bias would be to create a dataset with just few ethnic groups, like just caucasian and black people. A better way would be to gatther face from a bigger range of ethnics. Also, its is important to address diferrences in a same ethnic, nut from different contries. For example, faces of black people from USA could be different from faces from black people fom Brazil.
+
+    Also, it is important to get the same amount of faces for each of the ethnices so model be trained balanced data
+
+How would you rate this assessment question?
+Question 6 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Answer is partially correct
+
+The response identifies a potential source of bias, specifically the skewed representation of ethnic groups in the dataset. It also suggests a method to address this bias by gathering faces from a broader range of ethnicities and ensuring balanced data representation. However, the explanation lacks technical terminology and comprehensive detail on how to implement these measures effectively, such as using specific algorithms to detect and correct biases.
+
+
+Better answer:
+A potential source of bias in facial recognition models is an unbalanced representation of ethnic groups in the training data. To address this, I would ensure the dataset includes diverse ethnic groups, considering variations within ethnicities across regions. Additionally, I would apply techniques like re-sampling or weighted loss functions to balance underrepresented groups. Bias detection algorithms, such as fairness metrics (e.g., Demographic Parity), could also be employed to monitor and mitigate bias throughout training.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 7 of 10
+
+Consider the following confusion matrix of a machine learning model used in a classification task:
+
+
+
+	
+
+Actual Class
+
+Positive
+	
+
+Negative
+
+Predicted 
+
+Class
+	
+
+Positive
+	
+
+30
+	
+
+12
+
+Negative
+	
+
+8
+	
+
+56
+
+
+Which of the following information regarding the model performance is CORRECT?
+
+    accuracy: 0.833
+
+    precision: 0.815
+
+    sensitivity: 0.789
+
+    misclassification error: 0.126
+    I don't know yet
+
+How would you rate this assessment question?
+Question 7 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+You correctly identified that the sensitivity (also known as recall) of the model is 0.789. Sensitivity measures the proportion of actual positives that are correctly identified as such. In this confusion matrix, there are 30 true positives and 12 false negatives. The sensitivity is calculated as true positives divided by the sum of true positives and false negatives, which is 30 / (30 + 12) = 0.714. It seems there was a mistake in the options provided, but your selection aligns with recognizing the concept of sensitivity correctly.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 8 of 10
+
+Consider the following scenarios:
+
+
+	
+
+max_depth
+	
+
+Training Error
+	
+
+Validation Error
+
+Scenario 1
+	
+
+3
+	
+
+90
+	
+
+120
+
+Scenario 2
+	
+
+9
+	
+
+45
+	
+
+95
+
+Scenario 3
+	
+
+10
+	
+
+37
+	
+
+167
+
+Scenario 4
+	
+
+4
+	
+
+70
+	
+
+95
+
+Scenario 5
+	
+
+7
+	
+
+50
+	
+
+115
+
+
+Which of the above scenarios is MOST appropriate for gradient boosting?
+
+    Scenario 1
+
+    Scenario 2
+
+    Scenario 3
+
+    Scenario 4
+
+    Scenario 5
+    I don't know yet
+
+How would you rate this assessment question?
+Question 8 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The selection of Scenario 2 as the most appropriate for gradient boosting was incorrect mainly because the training and validation errors suggest a different pattern of model behavior. In Scenario 2, the training error is relatively low (45), and the validation error is higher (95), indicating potential overfitting with a maximum depth of 9. Gradient boosting generally benefits from scenarios where additional complexity (in this case, deeper trees) could improve performance on both training and validation datasets without leading to significant overfitting.
+
+Correct answer
+
+The correct choice is Scenario 4, and here's why: the training error is moderately high (70), and the validation error is also high (95). This suggests that the model with a max depth of 4 is underfitting, which means it is too simple to capture the underlying patterns in the data effectively. Gradient boosting improves performance by sequentially adding new models that address the residual errors made by existing models, making it particularly suitable for scenarios where increasing model complexity can lead to significant gains in performance.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 9 of 10
+
+You are preparing a dataset for a health outcome prediction model. The dataset's 'Age' column, critical for the model, is missing 15% of its values. Given that age impacts health outcomes nonlinearly, recommend an appropriate method to impute these missing values, explaining your choice and its impact on model accuracy.
+
+    Your Answer
+    Considering that the 'age' column is considered critical, we should not remove this rows from the dataset.
+    A simple way could be to make the imputation using the mean of this column, but considering that there is other variables, this could not be the best solution.
+    I best solution should be to train a regression classifier to predict the value of the column 'age' of the rows missing this information, so this way we should have a better estimation that takes the others columns.
+
+How would you rate this assessment question?
+Question 9 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you missed
+
+The learner suggested using a regression classifier to predict the missing age values. While this method considers other variables, it does not address the nonlinearity of age impacts on health outcomes as effectively as K-nearest neighbors (KNN) or multiple imputation by chained equations (MICE). The recommended approaches are more suitable for handling nonlinearity, which is critical for maintaining model accuracy.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 10 of 10
+
+Complete the following sentence:
+
+
+Ridge regression works well on a dataset with (A)__________ collinearity between features and (B)__________ result in sparse models with low regularization parameter value.
+
+    (A) low, (B) won’t
+
+    (A) high, (B) will
+
+    (A) low, (B) will
+
+    (A) high, (B) won’t
+    I don't know yet
+
+How would you rate this assessment question?
+Question 10 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+You selected "I don't know yet" or didn't select an option.
+
+Correct answer
+
+Ridge regression, also known as Tikhonov regularization, is particularly effective in datasets where there is high collinearity between features because it includes a penalty for large coefficients, which helps to reduce their variance. Unlike Lasso regression, which can produce sparse models (some coefficients exactly zero), Ridge regression does not typically result in sparse models, even with low regularization parameter values. This is why the correct answers are (A) high and (B) won’t.
