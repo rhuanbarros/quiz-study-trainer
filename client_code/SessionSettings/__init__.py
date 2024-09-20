@@ -111,7 +111,7 @@ class SessionSettings(SessionSettingsTemplate):
 
         ModuleGlobal.questions = self.questions_not_answered_yet
 
-        open_form("ShowQuestion")
+        open_form("ShowQuestionTrueFalse")
 
     def button_update_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -133,4 +133,4 @@ class SessionSettings(SessionSettingsTemplate):
 
         ModuleGlobal.questions = anvil.server.call("get_question_revision")
 
-        open_form("ShowQuestion")
+        open_form("ShowQuestionTrueFalse")

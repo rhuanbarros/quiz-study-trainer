@@ -1,4 +1,4 @@
-from ._anvil_designer import ShowQuestionTemplate
+from ._anvil_designer import ShowQuestionTrueFalseTemplate
 from anvil import *
 import anvil.users
 import anvil.server
@@ -13,7 +13,7 @@ import random
 from .. import ModuleGlobal
 
 
-class ShowQuestion(ShowQuestionTemplate):
+class ShowQuestionTrueFalse(ShowQuestionTrueFalseTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
