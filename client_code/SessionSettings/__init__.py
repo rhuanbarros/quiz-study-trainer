@@ -42,6 +42,9 @@ class SessionSettings(SessionSettingsTemplate):
 
     def button_start_click(self, **event_args):
         """This method is called when the button is clicked"""
+
+        print("button_start_click")
+
         ModuleGlobal.session_revision = False
 
         # ModuleGlobal.subject_matter_selected = (
@@ -52,6 +55,7 @@ class SessionSettings(SessionSettingsTemplate):
             if self.drop_down_level.selected_value == "All":
                 self.questions = app_tables.questions.search()
             else:
+                print("getting questions from database")
                 self.questions = app_tables.questions.search(
                     level=self.drop_down_level.selected_value
                 )
@@ -66,6 +70,7 @@ class SessionSettings(SessionSettingsTemplate):
                     level=self.drop_down_level.selected_value,
                 )
         # self.ansers = app_tables.answers.search(question=q.all_of(self.questions))
+        print("getting answers from database")
         self.answers = app_tables.answers.search()
 
         # print("len(self.questions)")
@@ -75,6 +80,7 @@ class SessionSettings(SessionSettingsTemplate):
             alert("No questions found")
             return
 
+        print("left join...")
         # some kind of LEFT JOIN implemention because Anvil doesn't have it in free plan
         self.questions_not_answered_yet = []
         for question in self.questions:
@@ -100,6 +106,7 @@ class SessionSettings(SessionSettingsTemplate):
             if not found_answer:
                 self.questions_not_answered_yet.append(question)
 
+        print("shuffle")
         random.shuffle(self.questions_not_answered_yet)
 
         # print("len(self.questions_not_answered_yet)")
